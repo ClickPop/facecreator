@@ -12,29 +12,109 @@
     crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   </head>
   <body>
-    <div id="faceContainer">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div id="faceContainer"></div>
+
+          <button id="regenerate" class="btn btn-primary my-3">Regenerate</button>
+        </div>
+
+        <div class="col-8 py-3">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_bg">Background</label>
+                <select id="select_bg" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_skin">Skin Tone</label>
+                <select id="select_skin" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_face">😊 Face</label>
+                <select id="select_face" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_mouth">👄 Mouth</label>
+                <select id="select_mouth" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_nose">👃 Nose</label>
+                <select id="select_nose" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_eyes">👁 Eyes</label>
+                <select id="select_eyes" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_hair">💈 Hair</label>
+                <select id="select_hair" class="form-control"></select>
+
+                <div class="form-check">
+                  <input class="form-check-input checks" type="checkbox" value="" id="check_hair">
+                  <label class="form-check-label" for="check_hair">
+                    Show hair?
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_beard">🧔 Facial Hair</label>
+                <select id="select_beard" class="form-control"></select>
+
+                <div class="form-check">
+                  <input class="form-check-input checks" type="checkbox" value="" id="check_beard">
+                  <label class="form-check-label" for="check_beard">
+                    Show beard?
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_hairColor">🎨 Hair Color</label>
+                <select id="select_hairColor" class="form-control"></select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_brows">🐛 Eyebrows</label>
+                <select id="select_brows" class="form-control"></select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-
-    <button id="regenerate">Regenerate</button><br />
-
-    Background: <select id="select_bg"></select><br />
-
-    Face: <select id="select_face"></select><select id="select_skin"></select><br />
-
-    Mouth: <select id="select_mouth"></select><br />
-
-    Nose: <select id="select_nose"></select><br />
-
-    Eyes: <select id="select_eyes"></select><br />
-
-    Hair: <select id="select_hair"></select><select id="select_hairColor"></select><input type="checkbox" class="checks" id="check_hair" /><br />
-
-    Brows: <select id="select_brows"></select><br />
-
-    Facial Hair: <select id="select_beard"></select><input type="checkbox" class="checks" id="check_beard" />
 
     <script src="js/main.js"></script>
 
