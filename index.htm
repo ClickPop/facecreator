@@ -41,19 +41,32 @@
 
     <button id="regenerate">Regenerate</button>
 
+    <select id="select_bg"></select>
+
     <script>
-      var bg,
-          face,
-          skin,
-          beard,
-          hair,
-          hairColor,
-          mouth,
-          nose,
-          eyes,
-          brows,
-          beardChoice,
-          hairChoice;
+      var bg = 9,
+          face= 4,
+          skin = 5,
+          beard = 3,
+          hair = 7,
+          hairColor = 5,
+          mouth = 6,
+          nose = 6,
+          eyes = 6,
+          brows = 3,
+          beardChoice = 2,
+          hairChoice = 10;
+
+
+      for(var i=1;i<=bg;i++) {
+        $('#select_bg').append(`
+          <option value="${i}">${i}</option>
+          `);
+      }
+
+      $('#select_bg').change(function(){
+        $('#bg').attr('src', 'bg/bg_0' + $(this).val() + '.png');
+      });
 
       function generate(part, num) {
         $('#' + part).attr('src', part + '/' + part + '_0' + num + '.png');
