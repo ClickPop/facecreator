@@ -43,6 +43,7 @@
     <button id="regenerate">Regenerate</button>
 
     <select id="select_bg"></select>
+    <select id="select_nose"></select>
 
     <script>
       var bg = 9,
@@ -58,21 +59,34 @@
           beardChoice = 2,
           hairChoice = 10;
 
-
-      for(var i=1;i<=bg;i++) {
-        $('#select_bg').append(`
-          <option value="${i}">${i}</option>
-          `);
-      }
-
-      $('#select_bg').change(function(){
-        $('#bg').attr('src', 'bg/bg_0' + $(this).val() + '.png');
-      });
-
+      // Function for filling in the src of an image based on the piece and variation.
+      // eg, generate('face', 1);
       function generate(part, num) {
         $('#' + part).attr('src', part + '/' + part + '_0' + num + '.png');
+        $('#select_' + part).val(num);
       }
 
+
+      // A function for populating the select boxes for each of the pieces that don't require skin tone.
+      function buildSelectSimple(part, num) {
+        for(var i=1;i<=num;i++) {
+          $('#select_' + part).append(`
+            <option value="${i}">${i}</option>
+            `);
+        }
+
+        $('#select_' + part).change(function(){
+          generate(part, $(this).val());
+          console.log($(this).val());
+        });
+      }
+
+      buildSelectSimple('bg', bg);
+      buildSelectSimple('nose', nose);
+
+
+
+      // A crazy and inefficient function for creating the initial, randomized face.
       function makerandomface() {
         bg = Math.floor(Math.random() * 9)+1,
         face = Math.floor(Math.random() * 4)+1,
@@ -114,7 +128,6 @@
 
       $('#regenerate').on('click', function(){
         makerandomface();
-        console.log('test');
       });
     </script>
 
