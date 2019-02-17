@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Face Generator</title>
+
+    <!-- jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+    <style>
+      #faceContainer {
+        height: 293px;
+        position: relative;
+        width: 293px;
+      }
+
+      .image {
+        position: absolute;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="faceContainer">
+      <img class="image" id="bg" />
+      <img class="image" id="face" />
+      <img class="image" id="beard" />
+      <img class="image" id="ear" />
+      <img class="image" id="mouth" />
+      <img class="image" id="nose" />
+      <img class="image" id="eyes" />
+      <img class="image" id="brows" />
+      <img class="image" id="hair" />
+    </div>
+
+    <button id="regenerate">Regenerate</button>
+
+    <script>
+      var bg,
+          face,
+          skin,
+          beard,
+          hair,
+          hairColor,
+          mouth,
+          nose,
+          eyes,
+          brows,
+          beardChoice,
+          hairChoice;
+
+      function generate(part, num) {
+        $('#' + part).attr('src', part + '/' + part + '_0' + num + '.png');
+      }
+
+      function makerandomface() {
+        bg = Math.floor(Math.random() * 9)+1,
+        face = Math.floor(Math.random() * 4)+1,
+        skin = Math.floor(Math.random() * 5)+1,
+        beard = Math.floor(Math.random() * 3)+1,
+        hair = Math.floor(Math.random() * 7)+1,
+        hairColor = Math.floor(Math.random() * 5)+1,
+        mouth = Math.floor(Math.random() * 6)+1,
+        nose = Math.floor(Math.random() * 6)+1,
+        eyes = Math.floor(Math.random() * 6)+1,
+        brows = Math.floor(Math.random() * 3)+1,
+        beardChoice = Math.floor(Math.random() * 2),
+        hairChoice = Math.floor(Math.random() * 10);
+
+        generate('bg', bg);
+        generate('face', face + '_0' + skin);
+        if(eyes != 2 && eyes != 4 && eyes != 6 && mouth != 4 && mouth != 5 && mouth != 6) {
+          if(beardChoice < 1) {
+            generate('beard', beard + '_0' + hairColor);
+          }
+        } else {
+          $('#beard').attr('src','');
+        }
+        generate('ear', skin);
+        generate('mouth', mouth);
+        generate('nose', nose);
+        generate('eyes', eyes);
+        generate('brows', brows + '_0' + hairColor);
+        if(hairChoice < 9) {
+          generate('hair', hair + '_0' + hairColor);
+        } else {
+          $('#hair').attr('src','');
+        }
+      }
+
+      $(document).ready(function(){
+        makerandomface();
+      });
+
+      $('#regenerate').on('click', function(){
+        makerandomface();
+        console.log('test');
+      });
+    </script>
+
+  </body>
+</html>
