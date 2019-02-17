@@ -24,26 +24,39 @@
         position: absolute;
       }
 
+      #bg { z-index: 1; }
+      #face { z-index: 2; }
+      #beard { z-index: 3; }
+      #ear { z-index: 4; }
+      #mouth { z-index: 5; }
+      #nose { z-index: 6; }
+      #eyes { z-index: 7; }
+      #brows { z-index: 8; }
+      #hair { z-index: 9; }
     </style>
 
   </head>
   <body>
     <div id="faceContainer">
-      <img class="image" id="bg" />
-      <img class="image" id="face" />
-      <img class="image" id="beard" />
-      <img class="image" id="ear" />
-      <img class="image" id="mouth" />
-      <img class="image" id="nose" />
-      <img class="image" id="eyes" />
-      <img class="image" id="brows" />
-      <img class="image" id="hair" />
     </div>
 
-    <button id="regenerate">Regenerate</button>
+    <button id="regenerate">Regenerate</button><br />
 
-    <select id="select_bg"></select>
-    <select id="select_nose"></select>
+    Background: <select id="select_bg"></select><br />
+
+    Face: <select id="select_face"></select><select id="select_skin"></select><br />
+
+    Mouth: <select id="select_mouth"></select><br />
+
+    Nose: <select id="select_nose"></select><br />
+
+    Eyes: <select id="select_eyes"></select><br />
+
+    Hair: <select id="select_hair"></select><select id="select_hairColor"></select><input type="checkbox" class="checks" id="check_hair" /><br />
+
+    Brows: <select id="select_brows"></select><br />
+
+    Facial Hair: <select id="select_beard"></select><input type="checkbox" class="checks" id="check_beard" />
 
     <script>
       var bg = 9,
@@ -59,76 +72,101 @@
           beardChoice = 2,
           hairChoice = 10;
 
-      // Function for filling in the src of an image based on the piece and variation.
-      // eg, generate('face', 1);
-      function generate(part, num) {
-        $('#' + part).attr('src', part + '/' + part + '_0' + num + '.png');
-        $('#select_' + part).val(num);
-      }
 
-
-      // A function for populating the select boxes for each of the pieces that don't require skin tone.
-      function buildSelectSimple(part, num) {
-        for(var i=1;i<=num;i++) {
-          $('#select_' + part).append(`
-            <option value="${i}">${i}</option>
-            `);
+      // Fill in select boxes for various parts.
+      // buildSelect(beard, 3) will fill the beard selector with 3 options.
+      function buildSelect(part,num) {
+        for(i=1;i<=num;i++) {
+          $('#select_' + part).append(`<option value="${i}">${i}</option>`);
         }
 
         $('#select_' + part).change(function(){
-          generate(part, $(this).val());
-          console.log($(this).val());
+          buildFace();
+        });
+
+        $('.checks').change(function(){
+          buildFace();
         });
       }
 
-      buildSelectSimple('bg', bg);
-      buildSelectSimple('nose', nose);
 
+      // Make a face from the values in the dropdowns.
+      function buildFace() {
+        var thebg = $('#select_bg').val(),
+            theface = $('#select_face').val(),
+            theskin = $('#select_skin').val(),
+            thenose = $('#select_nose').val(),
+            themouth = $('#select_mouth').val(),
+            theeyes = $('#select_eyes').val(),
+            thenose = $('#select_nose').val(),
+            thehairColor = $('#select_hairColor').val(),
+            thehair = $('#select_hair').val(),
+            thebeard = $('#select_beard').val(),
+            thebrows = $('#select_beard').val();
 
-
-      // A crazy and inefficient function for creating the initial, randomized face.
-      function makerandomface() {
-        bg = Math.floor(Math.random() * 9)+1,
-        face = Math.floor(Math.random() * 4)+1,
-        skin = Math.floor(Math.random() * 5)+1,
-        beard = Math.floor(Math.random() * 3)+1,
-        hair = Math.floor(Math.random() * 7)+1,
-        hairColor = Math.floor(Math.random() * 5)+1,
-        mouth = Math.floor(Math.random() * 6)+1,
-        nose = Math.floor(Math.random() * 6)+1,
-        eyes = Math.floor(Math.random() * 6)+1,
-        brows = Math.floor(Math.random() * 3)+1,
-        beardChoice = Math.floor(Math.random() * 2),
-        hairChoice = Math.floor(Math.random() * 10);
-
-        generate('bg', bg);
-        generate('face', face + '_0' + skin);
-        if(eyes != 2 && eyes != 4 && eyes != 6 && mouth != 4 && mouth != 5 && mouth != 6) {
-          if(beardChoice < 1) {
-            generate('beard', beard + '_0' + hairColor);
-          }
-        } else {
-          $('#beard').attr('src','');
+        $('#faceContainer').html('');
+        $('#faceContainer').append(`
+            <img id="bg" src="bg/bg_0${thebg}.png" class="image" />
+            <img id="face" src="face/face_0${theface}_0${theskin}.png" class="image" />
+            <img id="ear" src="ear/ear_0${theskin}.png" class="image" />
+            <img id="nose" src="nose/nose_0${thenose}.png" class="image" />
+            <img id="mouth" src="mouth/mouth_0${themouth}.png" class="image" />
+            <img id="eyes" src="eyes/eyes_0${theeyes}.png" class="image" />
+            <img id="brows" src="brows/brows_0${thebrows}_0${thehairColor}.png" class="image" />
+          `);
+        if($('#check_beard').is(':checked')) {
+          $('#faceContainer').append(`
+              <img id="beard" src="beard/beard_0${thebeard}_0${thehairColor}.png" class="image" />
+            `);
         }
-        generate('ear', skin);
-        generate('mouth', mouth);
-        generate('nose', nose);
-        generate('eyes', eyes);
-        generate('brows', brows + '_0' + hairColor);
-        if(hairChoice < 9) {
-          generate('hair', hair + '_0' + hairColor);
-        } else {
-          $('#hair').attr('src','');
+        if($('#check_hair').is(':checked')) {
+          $('#faceContainer').append(`
+              <img id="hair" src="hair/hair_0${thehair}_0${thehairColor}.png" class="image" />
+            `);
         }
       }
 
-      $(document).ready(function(){
-        makerandomface();
-      });
 
-      $('#regenerate').on('click', function(){
-        makerandomface();
-      });
+      // Make a random face.
+      function randomFace() {
+        $('#select_bg').val(Math.floor(Math.random() * bg) + 1);
+        $('#select_face').val(Math.floor(Math.random() * face) + 1);
+        $('#select_skin').val(Math.floor(Math.random() * skin) + 1);
+        $('#select_mouth').val(Math.floor(Math.random() * mouth) + 1);
+        $('#select_nose').val(Math.floor(Math.random() * nose) + 1);
+        $('#select_eyes').val(Math.floor(Math.random() * eyes) + 1);
+        $('#select_hair').val(Math.floor(Math.random() * hair) + 1);
+        $('#select_hairColor').val(Math.floor(Math.random() * hairColor) + 1);
+        $('#select_brows').val(Math.floor(Math.random() * brows) + 1);
+        $('#select_beard').val(Math.floor(Math.random() * beard) + 1);
+        if(Math.floor(Math.random() * 2) == 1) {
+          $('#check_beard').attr('checked', true)
+        } else {
+          $('#check_beard').attr('checked', false)
+        }
+        if(Math.floor(Math.random() * 2) == 1) {
+          $('#check_hair').attr('checked', true)
+        } else {
+          $('#check_hair').attr('checked', false)
+        }
+
+        buildFace();
+      }
+
+
+      // Fill options in select boxes.
+      buildSelect('bg', bg);
+      buildSelect('face', face);
+      buildSelect('skin', skin);
+      buildSelect('mouth', mouth);
+      buildSelect('nose', nose);
+      buildSelect('eyes', eyes);
+      buildSelect('hair', hair);
+      buildSelect('hairColor', hairColor);
+      buildSelect('brows', brows);
+      buildSelect('beard', beard);
+
+      randomFace();
     </script>
 
   </body>
