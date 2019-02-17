@@ -1,0 +1,22 @@
+#faceContainer {
+  border-radius: 50%;
+  height: 293px;
+  overflow: hidden;
+  position: relative;
+  width: 293px;
+}
+
+.image {
+  position: absolute;
+}
+
+// Set z-index for the different face parts.
+#bg { z-index: 1; }
+#face { z-index: 2; }
+#beard { z-index: 3; }
+#ear { z-index: 4; }
+#mouth { z-index: 5; }
+#nose { z-index: 6; }
+#eyes { z-index: 7; }
+#brows { z-index: 8; }
+#hair { z-index: 9; }
