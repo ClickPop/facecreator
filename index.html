@@ -10,92 +10,82 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-4 py-3 text-center">
+        <div class="col-12 col-lg-4 py-3 text-center">
           <div id="faceContainer"></div>
 
-          <button id="regenerate" class="btn btn-primary my-3">Regenerate</button>
+          <button id="regenerate" class="btn btn-primary my-3">You feelin' lucky?</button>
         </div>
 
-        <div class="col-12 col-sm-8 py-3">
+        <div class="col-12 col-lg-8 py-3">
 
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="select_bg">Background</label>
-                <select id="select_bg" class="custom-select"></select>
+                <input id="select_bg" type="text" class="slider">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="select_skin">Skin Tone</label>
-                <select id="select_skin" class="custom-select"></select>
+                <input id="select_skin" type="text" class="slider">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_face">😊 Face</label>
-                <select id="select_face" class="custom-select"></select>
+                <label for="select_face">Face</label>
+                <input id="select_face" type="text" class="slider" data-handle="face">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_mouth">👄 Mouth</label>
-                <select id="select_mouth" class="custom-select"></select>
+                <label for="select_mouth">Mouth</label>
+                <input id="select_mouth" type="text" class="slider" data-handle="mouth">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_nose">👃 Nose</label>
-                <select id="select_nose" class="custom-select"></select>
+                <label for="select_nose">Nose</label>
+                <input id="select_nose" type="text" class="slider" data-handle="nose">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_eyes">👁 Eyes</label>
-                <select id="select_eyes" class="custom-select"></select>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="select_hair">💈 Hair</label>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" value="" id="check_hair" class="checks" aria-label="Show" title="Show">
-                  </div>
-                </div>
-                <select id="select_hair" class="custom-select"></select>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="select_beard">🧔 Facial Hair</label>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" value="" id="check_beard" class="checks" aria-label="Show" title="Show">
-                  </div>
-                </div>
-                <select id="select_beard" class="custom-select"></select>
+                <label for="select_eyes">Eyes</label>
+                <input id="select_eyes" type="text" class="slider" data-handle="eyes">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_hairColor">🎨 Hair Color</label>
-                <select id="select_hairColor" class="custom-select"></select>
+                <label for="select_hair">Hair</label> <label>(Show: <input type="checkbox" value="" id="check_hair" class="checks" aria-label="Show" title="Show"></label>)
+                <input id="select_hair" type="text" class="slider" data-handle="hair">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="select_brows">🐛 Eyebrows</label>
-                <select id="select_brows" class="custom-select"></select>
+                <label for="select_beard">Facial Hair</label> <label>(Show: <input type="checkbox" value="" id="check_beard" class="checks" aria-label="Show" title="Show"></label>)
+                <input id="select_beard" type="text" class="slider" data-handle="beard">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_hairColor">Hair Color</label>
+                <input id="select_hairColor" type="text" class="slider" data-handle="hairColor">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="select_brows">Eyebrows</label>
+                <input id="select_brows" type="text" class="slider" data-handle="brows">
               </div>
             </div>
 
