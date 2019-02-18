@@ -13,6 +13,7 @@ const del = require("del");
 const fancyLog = require("fancy-log");
 const replace = require("gulp-string-replace");
 const environments = require("gulp-environments");
+const rename = require("gulp-rename");
 const p = require("./package.json");
 
 const envBuild = environments.make("build");
@@ -31,6 +32,7 @@ var paths = {
             "./" + jsFolder + "/" + vendorFolder + "/jquery/jquery.js", /* Disable for WP */
             "./" + jsFolder + "/" + vendorFolder + "/html2canvas/html2canvas.js",
             "./" + jsFolder + "/" + vendorFolder + "/bootstrap/bootstrap.bundle.js",
+            "./" + jsFolder + "/" + vendorFolder + "/rangeslider/rangeslider.js",
         ],
         src: [
             "./" + jsFolder + "/" + srcFolder + "/main.js"
@@ -100,10 +102,23 @@ function vendor_bootstrap_scripts() {
         .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/bootstrap"));
 }
 
+function vendor_rangeslider_scripts() {
+    "use strict";
+    return src("./node_modules/rangeslider.js/dist/rangeslider.js")
+        .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/rangeslider"));
+}
+
 function vendor_bootstrap_styles() {
     "use strict";
     return src("./node_modules/bootstrap/scss/**/*.*")
         .pipe(dest("./" + sassFolder + "/" + vendorFolder + "/bootstrap"));
+}
+
+function vendor_rangeslider_styles() {
+    "use strict";
+    return src("./node_modules/rangeslider.js/dist/rangeslider.css")
+        .pipe(rename("rangeslider.scss"))
+        .pipe(dest("./" + sassFolder + "/" + vendorFolder + "/rangeslider"));
 }
 
 function build_styles() {
@@ -151,9 +166,12 @@ function serverReplace() {
 }
 
 const clean = parallel(clean_styles, clean_scripts);
-const move_styles = parallel(vendor_bootstrap_styles);
+const move_styles = parallel(
+    vendor_bootstrap_styles,
+    vendor_rangeslider_styles);
 const move_scripts = parallel(
     vendor_bootstrap_scripts,
+    vendor_rangeslider_scripts,
     vendor_jquery,
     vendor_html2canvas);
 const move = parallel(move_scripts, move_styles);

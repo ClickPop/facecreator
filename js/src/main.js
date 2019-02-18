@@ -14,21 +14,19 @@ var choices = {
 // Fill in select boxes for various parts.
 // buildSelect(beard, 3) will fill the beard selector with 3 options.
 function buildSelect(part,num) {
-  for(i=1;i<=num;i++) {
-    $('#select_' + part).append(`<option value="${i}">${i}</option>`);
-  }
-
-  $('#select_' + part).change(function(){
-    buildFace();
-  });
-
-  $('.checks').change(function(){
-    buildFace();
-  });
+  var $obj = $('#select_' + part)
+    .attr("type", "range")
+    .attr("min", 1)
+    .attr("max", num);
 }
 
 
 // Make a face from the values in the dropdowns.
+function changeSlider() {
+  $(this).rangeslider("update", true);
+  buildFace();
+}
+
 function buildFace() {
   var thebg = $('#select_bg').val(),
       theface = $('#select_face').val(),
@@ -42,7 +40,7 @@ function buildFace() {
       thebeard = $('#select_beard').val(),
       thebrows = $('#select_beard').val();
 
-  $('#faceContainer').html('');
+  $('#faceContainer').empty();
   $('#faceContainer').append(`
       <img id="bg" src="img/bg/bg_0${thebg}.png" class="image" />
       <img id="face" src="img/face/face_0${theface}_0${theskin}.png" class="image" />
@@ -64,36 +62,44 @@ function buildFace() {
   }
 }
 
+function randomSliderValue() {
+  var $this = $(this),
+    max = $this.attr("max"),
+    min = 1,
+    random = null;
+
+  random = Math.floor(Math.random() * (max - min + 1)) + min;
+  $this.val(random).rangeslider("update", true);
+}
+
+function randomCheckValue() {
+  var $this = $(this)
+  $this.attr('checked', (Math.random() >= 0.5) ? true : false);
+}
 
 // Make a random face.
 function randomFace() {
-  $('#select_bg').val(Math.floor(Math.random() * choices.bg) + 1);
-  $('#select_face').val(Math.floor(Math.random() * choices['face']) + 1);
-  $('#select_skin').val(Math.floor(Math.random() * choices.skin) + 1);
-  $('#select_mouth').val(Math.floor(Math.random() * choices.mouth) + 1);
-  $('#select_nose').val(Math.floor(Math.random() * choices.nose) + 1);
-  $('#select_eyes').val(Math.floor(Math.random() * choices.eyes) + 1);
-  $('#select_hair').val(Math.floor(Math.random() * choices.hair) + 1);
-  $('#select_hairColor').val(Math.floor(Math.random() * choices.hairColor) + 1);
-  $('#select_brows').val(Math.floor(Math.random() * choices.brows) + 1);
-  $('#select_beard').val(Math.floor(Math.random() * choices.beard) + 1);
-  if(Math.floor(Math.random() * 2) == 1) {
-    $('#check_beard').attr('checked', true)
-  } else {
-    $('#check_beard').attr('checked', false)
-  }
-  if(Math.floor(Math.random() * 2) == 1) {
-    $('#check_hair').attr('checked', true)
-  } else {
-    $('#check_hair').attr('checked', false)
-  }
-
+  $('.slider').each(randomSliderValue);
+  $('.checks').each(randomCheckValue);
   buildFace();
 }
 
+function initRangeSlider() {
+  var $this = $(this),
+    handle = ($this.data("handle")),
+    args = (typeof handle === "string") ?
+      {polyfill: false, handleClass: 'rangeslider__handle emoji ' + handle}:
+      {polyfill: false};
+  $this.rangeslider(args);
+}
 
-// Fill options in select boxes.
-$.each( choices, function( key, value ) {
-  buildSelect(key, value);
-});
-$('#regenerate').on('click', function(){ randomFace(); }).trigger('click');
+$(document).ready(function () {
+  // Fill options in select boxes.
+  $.each( choices, function( key, value ) {
+    buildSelect(key, value);
+  });
+  // $(".slider").slider();
+  $('input[type=range]').each(initRangeSlider).on('change', changeSlider);
+  $('.checks').on('change', buildFace);
+  $('#regenerate').on('click', randomFace).trigger('click');
+})

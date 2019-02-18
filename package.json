@@ -19,7 +19,8 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "html2canvas": "^1.0.0-alpha.12",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "rangeslider.js": "andreruffert/rangeslider.js"
   },
   "devDependencies": {
     "del": "^3.0.0",
