@@ -1,15 +1,15 @@
 var choices = {
-    bg: 9,
-    face: 4,
-    skin: 5,
-    beard: 3,
-    hair: 7,
-    hairColor: 5,
-    mouth: 6,
-    nose: 6,
-    eyes: 6,
-    brows: 3
-  };
+  bg: 9,
+  face: 4,
+  skin: 5,
+  beard: 3,
+  hair: 7,
+  hairColor: 5,
+  mouth: 6,
+  nose: 6,
+  eyes: 6,
+  brows: 3
+};
 
 // Fill in select boxes for various parts.
 // buildSelect(beard, 3) will fill the beard selector with 3 options.
