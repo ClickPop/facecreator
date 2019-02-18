@@ -1,13 +1,16 @@
 #faceContainer {
   border-radius: 50%;
   height: 293px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 293px;
 }
 
 .image {
+  left: 0;
   position: absolute;
+  top: 0;
 }
 
 // Set z-index for the different face parts.
