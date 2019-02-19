@@ -1,0 +1,17 @@
+/* TEAM */
+	Designer / Developer: Chris Vasquez
+	Twitter: @clickpop
+	From: Havertown, PA, USA
+
+	Developer: Sean Metzgar
+	Contact: http://ewereka.com
+	Twitter: @seanmetzgar
+	From: Bethlehem, PA, USA
+
+/* SITE */
+	Last update: {{COMMIT_DATE}}
+	Language: English
+	Doctype: HTML5
+	Standards: HTML5, CSS3, Sass
+	Components: jQuery, Bootstrap 4.3, rangeslider.js
+	Software: Photoshop, Procreate, Atom, GitHub
