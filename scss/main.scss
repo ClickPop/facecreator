@@ -1,3 +1,7 @@
+@import 'includes/variables';
+@import 'vendor/bootstrap/bootstrap';
+@import 'vendor/rangeslider/rangeslider';
+
 #faceContainer {
   border-radius: 50%;
   height: 293px;
@@ -23,3 +27,59 @@
 #eyes { z-index: 7; }
 #brows { z-index: 8; }
 #hair { z-index: 9; }
+
+.rangeslider__fill {
+	background: $warning;
+}
+.rangeslider__handle {
+	&.emoji {
+		&:after {
+			background: transparent;
+			border-color: 0;
+			width: auto; height: 22px;
+			line-height: 22px;
+			text-align: center;
+		}
+
+		&.face {
+			&:after {
+				content: '\01F600';
+			}
+		}
+		&.mouth {
+			&:after {
+				content: '\01F444';
+			}
+		}
+		&.eyes {
+			&:after {
+				content: '\01F441';
+			}
+		}
+		&.nose {
+			&:after {
+				content: '\01F443';
+			}
+		}
+		&.hair {
+			&:after {
+				content: '\01F488';
+			}
+		}
+		&.brows {
+			&:after {
+				content: '\01F41B';
+			}
+		}
+		&.beard {
+			&:after {
+				content: '\01F9D4';
+			}
+		}
+		&.hairColor {
+			&:after {
+				content: '\01F3A8';
+			}
+		}
+	}
+}
