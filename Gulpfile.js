@@ -182,10 +182,9 @@ const move_scripts = parallel(
     vendor_jquery,
     vendor_html2canvas);
 const move = parallel(move_scripts, move_styles);
-const build = series(clean, move, build_styles, build_scripts);
+const build = series(clean, move, build_styles, build_scripts, server_replace);
 const build_watch = series(build, watch_files);
 
-exports.replace = server_replace;
 exports.default = build_watch;
 exports.build = build;
 exports.watch = watch_files;

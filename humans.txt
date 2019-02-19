@@ -10,6 +10,7 @@
 
 /* SITE */
 	Last update: {{COMMIT_DATE}}
+  Version: {{VERSION}}
 	Language: English
 	Doctype: HTML5
 	Standards: HTML5, CSS3, Sass
