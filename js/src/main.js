@@ -38,7 +38,7 @@ function buildFace() {
       thehairColor = $('#select_hairColor').val(),
       thehair = $('#select_hair').val(),
       thebeard = $('#select_beard').val(),
-      thebrows = $('#select_beard').val();
+      thebrows = $('#select_brows').val();
 
   $('#faceContainer').empty();
   $('#faceContainer').append(`
