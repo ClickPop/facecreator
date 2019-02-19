@@ -13,3 +13,10 @@ To compile the scss to css run in the root directory (Sean's going to add webpac
 - [x] Ability to turn off hair.
 - [ ] Ability to reposition any of the elements (adjust `top` and `left` css values).
 - [ ] Ability to download as image.
+
+## Images to add
+- [ ] Glasses
+- [ ] Freckles and beauty marks
+- [ ] Hijab
+- [ ] Turban
+- [ ] Piercings
