@@ -3,12 +3,12 @@ var choices = {
   face: 4,
   skin: 5,
   beard: 3,
-  hair: 7,
+  hair: 9,
   hairColor: 5,
-  mouth: 6,
-  nose: 6,
-  eyes: 6,
-  brows: 3
+  mouth: 8,
+  nose: 8,
+  eyes: 8,
+  brows: 4
 };
 
 // Fill in select boxes for various parts.
