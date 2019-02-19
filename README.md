@@ -11,6 +11,7 @@ To compile the scss to css run in the root directory (Sean's going to add webpac
 - [x] When random face is generated, select box values should reflect the randomized pieces.
 - [x] Ability to turn off facial hair.
 - [x] Ability to turn off hair.
+- [ ] Update part selection while dragging slider.
 - [ ] Ability to reposition any of the elements (adjust `top` and `left` css values).
 - [ ] Ability to download as image.
 
