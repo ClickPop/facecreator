@@ -20,13 +20,19 @@ function buildSelect(part,num) {
     .attr("max", num);
 }
 
-
 // Make a face from the values in the dropdowns.
 function changeSlider() {
   $(this).rangeslider("update", true);
   buildFace();
 }
 
+//Updates slider value & gemerates face while dragging slider
+function updateSlider(position, value, element) {
+  var $this = $(element).val(value).change();
+  buildFace();
+}
+
+//Build face images based on values
 function buildFace() {
   var thebg = $('#select_bg').val(),
       theface = $('#select_face').val(),
@@ -62,6 +68,7 @@ function buildFace() {
   }
 }
 
+//Set a random slider value
 function randomSliderValue() {
   var $this = $(this),
     max = $this.attr("max"),
@@ -72,6 +79,7 @@ function randomSliderValue() {
   $this.val(random).rangeslider("update", true);
 }
 
+//Set a random checkbox value
 function randomCheckValue() {
   var $this = $(this)
   $this.attr('checked', (Math.random() >= 0.5) ? true : false);
@@ -84,12 +92,13 @@ function randomFace() {
   buildFace();
 }
 
+//Init rangeslider object & handle applicable emoji
 function initRangeSlider() {
   var $this = $(this),
     handle = ($this.data("handle")),
     args = (typeof handle === "string") ?
-      {polyfill: false, handleClass: 'rangeslider__handle emoji ' + handle}:
-      {polyfill: false};
+      {polyfill: false, handleClass: 'rangeslider__handle emoji ' + handle, onSlide: function(p, v) {updateSlider(p, v, this)}}:
+      {polyfill: false, onSlide: function(p, v) {updateSlider(p, v, this)}};
   $this.rangeslider(args);
 }
 

@@ -1,4 +1,4 @@
-const {series, parallel, src, dest, watch} = require("gulp");
+const {series, parallel, src, dest, watch, task} = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const uglifyES = require("uglify-es");
 const composer = require("gulp-uglify/composer");
@@ -14,6 +14,7 @@ const fancyLog = require("fancy-log");
 const replace = require("gulp-string-replace");
 const environments = require("gulp-environments");
 const rename = require("gulp-rename");
+const syncer = require('gulp-npm-script-sync');
 const p = require("./package.json");
 
 const envBuild = environments.make("build");
@@ -65,7 +66,7 @@ var paths = {
     }
 };
 
-function dateToday() {
+function date_today() {
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth() + 1; //January is 0!
@@ -157,12 +158,18 @@ function clean_scripts() {
     return del(paths.clean.scripts);
 }
 
-function serverReplace() {
+function server_replace() {
     "use strict";
     return src(paths.replace, {base: "./"})
         .pipe(envBuild(replace("{{VERSION}}", p.version)))
-        .pipe(envBuild(replace("{{COMMIT_DATE}}", dateToday())))
+        .pipe(envBuild(replace("{{COMMIT_DATE}}", date_today())))
         .pipe(envBuild(dest("./")));
+}
+
+function watch_files() {
+  "use strict";
+  watch(paths.scripts.watch, series(clean_scripts, move_scripts, build_scripts));
+  watch(paths.styles.watch, series(clean_styles, move_styles, build_styles));
 }
 
 const clean = parallel(clean_styles, clean_scripts);
@@ -176,10 +183,9 @@ const move_scripts = parallel(
     vendor_html2canvas);
 const move = parallel(move_scripts, move_styles);
 const build = series(clean, move, build_styles, build_scripts);
+const build_watch = series(build, watch_files);
 
-watch(paths.scripts.watch, series(clean_scripts, move_scripts, build_scripts));
-watch(paths.styles.watch, series(clean_styles, move_styles, build_styles));
-
-exports.replace = serverReplace;
+exports.replace = server_replace;
+exports.default = build_watch;
 exports.build = build;
-exports.default = build;
+exports.watch = watch_files;
