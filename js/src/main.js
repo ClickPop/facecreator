@@ -155,7 +155,6 @@ function downloadAvatar() {
       var image = null;
       try {
         image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        window.location.href = image;
       } catch(e) {
         image = null;
         console.error("Error: Tainted Canvas... Are you running locally?");
