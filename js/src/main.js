@@ -148,13 +148,14 @@ function initRangeSlider() {
 }
 
 function downloadAvatar() {
-  faceHtml = document.getElementById('faceContainer');
-  $faceImage = $('#faceImage').empty();
+  var faceHtml = document.getElementById('faceContainer'),
+    $faceImage = $('#faceImage').empty(),
+    $button = $(this),
+    $link = null;
   html2canvas(faceHtml, {logging: false}).then(function(canvas) {
       var image = null;
       try {
         image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        window.location.href = image;
       } catch(e) {
         image = null;
         console.error("Error: Tainted Canvas... Are you running locally?");
@@ -162,8 +163,14 @@ function downloadAvatar() {
       }
 
       if (image !== null) {
-        window.location.href=image;
+        $('.hiddenLink').empty();
+        $link = $("<a>download</a>").appendTo(".hiddenLink");
+        $link.attr("href", image)
+          .attr("download", "avatar.png")
+          .get(0).click();
+        $link.remove();
       }
+      $link = null;
   });
 }
 
