@@ -14,7 +14,6 @@ const fancyLog = require("fancy-log");
 const replace = require("gulp-string-replace");
 const environments = require("gulp-environments");
 const rename = require("gulp-rename");
-const syncer = require('gulp-npm-script-sync');
 const p = require("./package.json");
 
 const envBuild = environments.make("build");

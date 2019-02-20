@@ -28,7 +28,7 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [x] Ability to turn off hair.
 - [x] Update part selection while dragging slider.
 - [ ] Ability to reposition any of the elements (adjust `top` and `left` css values).
-- [ ] Ability to download as image.
+- [x] Ability to download as image.
 
 ## Images to add
 - [ ] Glasses
