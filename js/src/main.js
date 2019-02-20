@@ -148,8 +148,9 @@ function initRangeSlider() {
 }
 
 function downloadAvatar() {
-  faceHtml = document.getElementById('faceContainer');
-  $faceImage = $('#faceImage').empty();
+  var rVal = false,
+    faceHtml = document.getElementById('faceContainer'),
+    $faceImage = $('#faceImage').empty();
   html2canvas(faceHtml, {logging: false}).then(function(canvas) {
       var image = null;
       try {
@@ -162,9 +163,15 @@ function downloadAvatar() {
       }
 
       if (image !== null) {
-        window.location.href=image;
+        $(this).attr("href", image)
+          .attr("download", "avatar.png");
+        rVal = true;
+      } else {
+        $(this).attr("href", "#");
       }
   });
+
+  return rVal;
 }
 
 $(document).ready(function () {
