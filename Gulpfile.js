@@ -36,6 +36,7 @@ var paths = {
             "./" + jsFolder + "/" + vendorFolder + "/rangeslider/rangeslider.js",
         ],
         src: [
+            "./" + jsFolder + "/" + srcFolder + "/prototypes.js",
             "./" + jsFolder + "/" + srcFolder + "/main.js"
         ],
         watch: [
@@ -84,14 +85,14 @@ function date_today() {
     return today;
 }
 
-function vendor_jquery() {
+function vendor_jquery_scripts() {
     "use strict";
     return src("./node_modules/jquery/dist/**/*.*")
         .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/jquery"));
 
 }
 
-function vendor_html2canvas() {
+function vendor_html2canvas_scripts() {
     "use strict";
     return src("./node_modules/html2canvas/dist/html2canvas.js")
         .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/html2canvas"));
@@ -142,8 +143,8 @@ function build_scripts() {
     return src(paths.scripts.vendor.concat(paths.scripts.src))
         .pipe(sourcemaps.init())
         .pipe(concat("main.js"))
-        .pipe(stripComments())
-        .pipe(uglify())
+        .pipe(envBuild(stripComments()))
+        .pipe(envBuild(uglify()))
         .pipe(sourcemaps.write("./"))
         .pipe(dest("./" + jsFolder + "/" + distFolder));
 }
@@ -179,8 +180,8 @@ const move_styles = parallel(
 const move_scripts = parallel(
     vendor_bootstrap_scripts,
     vendor_rangeslider_scripts,
-    vendor_jquery,
-    vendor_html2canvas);
+    vendor_jquery_scripts,
+    vendor_html2canvas_scripts);
 const move = parallel(move_scripts, move_styles);
 const build = series(clean, move, build_styles, build_scripts, server_replace);
 const build_watch = series(build, watch_files);

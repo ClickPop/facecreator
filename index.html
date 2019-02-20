@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>Face Generator</title>
 
     <link rel="author" href="humans.txt">
@@ -12,9 +13,13 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-4 py-3 text-center">
-          <div id="faceContainer"></div>
+          <div class="face-wrapper">
+            <div id="faceImage"></div>
+            <div id="faceContainer"></div>
+          </div>
 
-          <button id="regenerate" class="btn btn-primary my-3">You feelin' lucky?</button>
+          <button id="regenerate" class="btn btn-primary my-3">Randomize</button>
+          <button id="download" class="btn btn-success my-3">Download</button>
         </div>
 
         <div class="col-12 col-lg-8 py-3">
