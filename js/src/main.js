@@ -11,6 +11,12 @@ var choices = {
   brows: 4
 };
 
+//Format number value with leading 0 if needed
+function formatValue(n) {
+  n = parseInt(n);
+  n = isNaN(n) ? 1 : n;
+  return n > 9 ? "" + n: "0" + n;
+}
 // Fill in select boxes for various parts.
 // buildSelect(beard, 3) will fill the beard selector with 3 options.
 function buildSelect(part,num) {
@@ -34,38 +40,77 @@ function updateSlider(position, value, element) {
 
 //Build face images based on values
 function buildFace() {
-  var thebg = $('#select_bg').val(),
-      theface = $('#select_face').val(),
-      theskin = $('#select_skin').val(),
-      thenose = $('#select_nose').val(),
-      themouth = $('#select_mouth').val(),
-      theeyes = $('#select_eyes').val(),
-      thenose = $('#select_nose').val(),
-      thehairColor = $('#select_hairColor').val(),
-      thehair = $('#select_hair').val(),
-      thebeard = $('#select_beard').val(),
-      thebrows = $('#select_brows').val();
+  var $face = $('#faceContainer').empty(),
+    faceHtml = $face.get(0),
+    faceCanvas = document.getElementById("faceCanvas"),
+    faces = {
+      bg: {
+        show: true,
+        value: formatValue($('#select_bg').val()),
+        color: null
+      },
+      face: {
+        show: true,
+        value: formatValue($('#select_face').val()),
+        color: formatValue($('#select_skin').val())
+      },
+      ear: {
+        show: true,
+        value: null,
+        color: formatValue($('#select_skin').val())
+      },
+      nose: {
+        show: true,
+        value: formatValue($('#select_nose').val()),
+        color: null
+      },
+      mouth: {
+        show: true,
+        value: formatValue($('#select_mouth').val()),
+        color: null
+      },
+      eyes: {
+        show: true,
+        value: formatValue($('#select_eyes').val()),
+        color: null
+      },
+      brows: {
+        show: true,
+        value: formatValue($('#select_brows').val()),
+        color: formatValue($('#select_hairColor').val())
+      },
+      beard: {
+        show: $('#check_hair').is(':checked') ? true : false,
+        value: formatValue($('#select_beard').val()),
+        color: formatValue($('#select_hairColor').val())
+      },
+      hair: {
+        show: $('#check_hair').is(':checked') ? true : false,
+        value: formatValue($('#select_hair').val()),
+        color: formatValue($('#select_hairColor').val())
+      }
+    };
 
-  $('#faceContainer').empty();
-  $('#faceContainer').append(`
-      <img id="bg" src="img/bg/bg_0${thebg}.png" class="image" />
-      <img id="face" src="img/face/face_0${theface}_0${theskin}.png" class="image" />
-      <img id="ear" src="img/ear/ear_0${theskin}.png" class="image" />
-      <img id="nose" src="img/nose/nose_0${thenose}.png" class="image" />
-      <img id="mouth" src="img/mouth/mouth_0${themouth}.png" class="image" />
-      <img id="eyes" src="img/eyes/eyes_0${theeyes}.png" class="image" />
-      <img id="brows" src="img/brows/brows_0${thebrows}_0${thehairColor}.png" class="image" />
-    `);
-  if($('#check_beard').is(':checked')) {
-    $('#faceContainer').append(`
-        <img id="beard" src="img/beard/beard_0${thebeard}_0${thehairColor}.png" class="image" />
-      `);
-  }
-  if($('#check_hair').is(':checked')) {
-    $('#faceContainer').append(`
-        <img id="hair" src="img/hair/hair_0${thehair}_0${thehairColor}.png" class="image" />
-      `);
-  }
+  $.each(faces, function(key, part) {
+    var srcFormat1 = "img/{0}/{0}_{1}.png",
+      srcFormat2 = "img/{0}/{0}_{1}_{2}.png",
+      src = null,
+      $obj = null;
+
+    if (part.value !== null && part.color !== null) {
+      src = srcFormat2.format(key, part.value, part.color);
+    }  else if (part.value !== null && part.color === null) {
+      src = srcFormat1.format(key, part.value);
+    } else if (part.value === null && part.color !== null) {
+      src = srcFormat1.format(key, part.color);
+    }
+    if (src !== null && part.show) {
+      $obj = $("<img>").appendTo($face)
+        .addClass("image")
+        .attr("id", key)
+        .attr("src", src)
+    }
+  });
 }
 
 //Set a random slider value
@@ -102,6 +147,33 @@ function initRangeSlider() {
   $this.rangeslider(args);
 }
 
+function downloadAvatar() {
+  var faceHtml = document.getElementById('faceContainer'),
+    $faceImage = $('#faceImage').empty(),
+    $button = $(this),
+    $link = null;
+  html2canvas(faceHtml, {logging: false}).then(function(canvas) {
+      var image = null;
+      try {
+        image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      } catch(e) {
+        image = null;
+        console.error("Error: Tainted Canvas... Are you running locally?");
+        alert('Error: Are you running locally?');
+      }
+
+      if (image !== null) {
+        $('.hiddenLink').empty();
+        $link = $("<a>download</a>").appendTo(".hiddenLink");
+        $link.attr("href", image)
+          .attr("download", "avatar.png")
+          .get(0).click();
+        $link.remove();
+      }
+      $link = null;
+  });
+}
+
 $(document).ready(function () {
   // Fill options in select boxes.
   $.each( choices, function( key, value ) {
@@ -111,4 +183,5 @@ $(document).ready(function () {
   $('input[type=range]').each(initRangeSlider).on('change', changeSlider);
   $('.checks').on('change', buildFace);
   $('#regenerate').on('click', randomFace).trigger('click');
-})
+  $('#download').on('click', downloadAvatar);
+});
