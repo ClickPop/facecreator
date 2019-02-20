@@ -167,7 +167,8 @@ function downloadAvatar() {
         $link = $("<a>download</a>").appendTo(".hiddenLink");
         $link.attr("href", image)
           .attr("download", "avatar.png")
-          .click();
+          .get(0).click();
+        $link.remove();
       }
       $link = null;
   });
