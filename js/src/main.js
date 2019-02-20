@@ -148,10 +148,10 @@ function initRangeSlider() {
 }
 
 function downloadAvatar() {
-  var rVal = false,
-    faceHtml = document.getElementById('faceContainer'),
+  var faceHtml = document.getElementById('faceContainer'),
     $faceImage = $('#faceImage').empty(),
-    $button = $(this);
+    $button = $(this),
+    $link = null;
   html2canvas(faceHtml, {logging: false}).then(function(canvas) {
       var image = null;
       try {
@@ -161,19 +161,16 @@ function downloadAvatar() {
         console.error("Error: Tainted Canvas... Are you running locally?");
         alert('Error: Are you running locally?');
       }
-      console.log(image);
+
       if (image !== null) {
-        $button.attr("href", image)
-          .attr("download", "avatar.png");
-        rVal = true;
-      } else {
-        $button.attr("href", "#");
+        $('.hiddenLink').empty();
+        $link = $("<a>download</a>").appendTo(".hiddenLink");
+        $link.attr("href", image)
+          .attr("download", "avatar.png")
+          .click().remove();
       }
-
-      return rVal;
+      $link = null;
   });
-
-  return rVal;
 }
 
 $(document).ready(function () {
