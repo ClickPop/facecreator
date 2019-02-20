@@ -29,6 +29,7 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [x] Update part selection while dragging slider.
 - [ ] Ability to reposition any of the elements (adjust `top` and `left` css values).
 - [x] Ability to download as image.
+- [ ] Ability to download different sizes of image (what dimensions?).
 
 ## Images to add
 - [ ] Glasses
