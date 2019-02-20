@@ -152,7 +152,7 @@ function downloadAvatar() {
     $faceImage = $('#faceImage').empty(),
     $button = $(this),
     $link = null;
-  html2canvas(faceHtml, {logging: false}).then(function(canvas) {
+  html2canvas(faceHtml, {logging: false, backgroundColor: null}).then(function(canvas) {
       var image = null;
       try {
         image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
