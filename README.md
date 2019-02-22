@@ -32,8 +32,8 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [ ] Ability to download different sizes of image (what dimensions?).
 
 ## Images to add
-- [ ] Glasses
+- [x] Glasses
 - [ ] Freckles and beauty marks
 - [ ] Hijab
 - [ ] Turban
-- [ ] Piercings
+- [x] Piercings
