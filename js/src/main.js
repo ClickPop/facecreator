@@ -83,7 +83,7 @@ function buildFace() {
         color: formatValue($('#select_hairColor').val())
       },
       beard: {
-        show: $('#check_hair').is(':checked') ? true : false,
+        show: $('#check_beard').is(':checked') ? true : false,
         value: formatValue($('#select_beard').val()),
         color: formatValue($('#select_hairColor').val())
       },
