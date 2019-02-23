@@ -27,7 +27,7 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [x] Ability to turn off facial hair.
 - [x] Ability to turn off hair.
 - [x] Update part selection while dragging slider.
-- [ ] Ability to [reposition any of the elements](ClickPop/facecreator#14) (adjust `top` and `left` css values).
+- [ ] Ability to [reposition any of the elements](ClickPop/facecreator/issues/14) (adjust `top` and `left` css values).
 - [x] Ability to download as image.
 - [ ] Ability to download different sizes of image (what dimensions?).
 
