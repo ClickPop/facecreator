@@ -9,9 +9,9 @@ var choices = {
   nose: 8,
   eyes: 8,
   brows: 4,
-  glasses: 2,
-  glassesColor: 4,
-  piercings: 7
+  glasses: 3,
+  glassesColor: 5,
+  piercings: 8
 };
 
 //Format number value with leading 0 if needed
