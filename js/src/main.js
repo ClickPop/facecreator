@@ -11,7 +11,9 @@ var choices = {
   brows: 4,
   glasses: 3,
   glassesColor: 5,
-  piercings: 8
+  piercings: 8,
+  headcoverings: 3,
+  headcoveringsColor: 5
 };
 
 //Format number value with leading 0 if needed
@@ -91,6 +93,11 @@ function buildFace() {
         show: $('#check_hair').is(':checked') ? true : false,
         value: formatValue($('#select_hair').val()),
         color: formatValue($('#select_hairColor').val())
+      },
+      headcoverings: {
+        show: $('#check_headcoverings').is(':checked') ? true : false,
+        value: formatValue($('#select_headcoverings').val()),
+        color: formatValue($('#select_headcoveringsColor').val())
       },
       glasses: {
         show: $('#check_glasses').is(':checked') ? true : false,
