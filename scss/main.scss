@@ -83,5 +83,10 @@
 				content: '\01F3A8';
 			}
 		}
+    &.glasses {
+      &:after {
+        content: '\01F453';
+      }
+    }
 	}
 }
