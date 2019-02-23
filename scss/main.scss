@@ -84,5 +84,20 @@
 				content: '\01F3A8';
 			}
 		}
+    &.headcoverings {
+      &:after {
+        content: '\01F9D5';
+      }
+    }
+    &.glasses {
+      &:after {
+        content: '\01F453';
+      }
+    }
+    &.piercings {
+      &:after {
+        content: '\01F48E';
+      }
+    }
 	}
 }
