@@ -1,7 +1,7 @@
 # Contributing to Face Creator
 :+1::tada: **First off, thanks for taking the time to contribute** :tada::+1:
 
-The following is a set of guidelines for contributing to Face Creator, which is hosted in the [ClickPop/facecreator](https://github.com/ClickPop/facecreator) repository on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to Face Creator, which is hosted in the [ClickPop/facecreator](ClickPop/facecreator) repository on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Code of Conduct
 
@@ -11,7 +11,7 @@ This project and everyone contributing in it is governed by our [Code of Conduct
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for Face Creator. Following these guidelines helps the maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, find related reports :mag_right:, and [hopefully/ultimately] fix them :tada::balloon:.
+This section guides you through submitting a bug report for Face Creator. Following these guidelines helps the maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, find related reports :mag_right:, and *hopefully/ultimately* fix them :tada::balloon:.
 
 **Before submitting an issue**, please do a [cursory search][issues] to ensure the problem has not already been submitted. **If one has been created, and it is still open**, add a comment to the existing report instead of creating a new one. If no similar issue can be found, please fill out [the required template][new-issue], add a descriptive title, and submit the bug report.
 
@@ -19,7 +19,7 @@ This section guides you through submitting a bug report for Face Creator. Follow
 
 When submitting your issue, be sure to include as much information about how the problem as well as any-and-all steps used to recreate the problem. Feel free to add images or even animated GIFs that show the problem or steps used to recreate it.
 
-> **Note:** You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux.
+> **Note:** You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](colinkeenan/silentcast) or [this tool](GNOME/byzanz) on Linux.
 
 ### Suggesting Enhancements
 
