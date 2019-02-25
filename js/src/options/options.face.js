@@ -13,7 +13,7 @@ var sections = {
     label: "Hair",
     options: {
       hairColor: colorOption("Hair Color", 5),
-      hair: toggleOptionHiddenBy("Hair", 9, true, "hairColor", "headcoverings"),
+      hair: toggleOptionHiddenBy("Hair", 9, "headcoverings", true, "hairColor"),
       beard: toggleOption("Facial Hair", 3, true, "hairColor"),
       brows: standardOption("Eyebrows", 4, true, "hairColor")
     }
@@ -34,4 +34,7 @@ var sections = {
       bg: standardOption("Background", 9)
     }
   }
+};
+var hiddenOptions = {
+  ear: hiddenOption("skin")
 };

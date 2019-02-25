@@ -31,73 +31,81 @@
 #glasses { z-index: 11; }
 #headcoverings { z-index: 12; }
 
-.rangeslider__fill {
-	background: $warning;
+.toggle-label {
+  margin-left: 1rem;
+  &:before { content: '('; }
+  &:after { content: ')'; }
 }
-.rangeslider__handle {
-	&.emoji {
-		&:after {
-			background: transparent;
-			border-color: 0;
-			width: auto; height: 22px;
-			line-height: 22px;
-			text-align: center;
-		}
+.rangeslider {
+  .rangeslider__fill {
+  	background: $warning;
+  }
 
-		&.face {
-			&:after {
-				content: '\01F600';
-			}
-		}
-		&.mouth {
-			&:after {
-				content: '\01F444';
-			}
-		}
-		&.eyes {
-			&:after {
-				content: '\01F441';
-			}
-		}
-		&.nose {
-			&:after {
-				content: '\01F443';
-			}
-		}
-		&.hair {
-			&:after {
-				content: '\01F488';
-			}
-		}
-		&.brows {
-			&:after {
-				content: '\01F41B';
-			}
-		}
-		&.beard {
-			&:after {
-				content: '\01F9D4';
-			}
-		}
-		&.hairColor {
-			&:after {
-				content: '\01F3A8';
-			}
-		}
-    &.headcoverings {
-      &:after {
-        content: '\01F9D5';
+  .rangeslider__handle {
+  	&.emoji {
+  		&:after {
+  			background: transparent;
+  			border-color: 0;
+  			width: auto; height: 22px;
+  			line-height: 22px;
+  			text-align: center;
+  		}
+
+  		&.face {
+  			&:after {
+  				content: '\01F600';
+  			}
+  		}
+  		&.mouth {
+  			&:after {
+  				content: '\01F444';
+  			}
+  		}
+  		&.eyes {
+  			&:after {
+  				content: '\01F441';
+  			}
+  		}
+  		&.nose {
+  			&:after {
+  				content: '\01F443';
+  			}
+  		}
+  		&.hair {
+  			&:after {
+  				content: '\01F488';
+  			}
+  		}
+  		&.brows {
+  			&:after {
+  				content: '\01F41B';
+  			}
+  		}
+  		&.beard {
+  			&:after {
+  				content: '\01F9D4';
+  			}
+  		}
+  		&.hairColor {
+  			&:after {
+  				content: '\01F3A8';
+  			}
+  		}
+      &.headcoverings {
+        &:after {
+          content: '\01F9D5';
+        }
       }
-    }
-    &.glasses {
-      &:after {
-        content: '\01F453';
+      &.glasses {
+        &:after {
+          content: '\01F453';
+        }
       }
-    }
-    &.piercings {
-      &:after {
-        content: '\01F48E';
+      &.piercings {
+        &:after {
+          content: '\01F48E';
+        }
       }
-    }
-	}
+  	}
+  }
 }
