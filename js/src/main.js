@@ -1,115 +1,28 @@
-var choices = {
-  bg: 9,
-  face: 4,
-  skin: 5,
-  beard: 3,
-  hair: 9,
-  hairColor: 5,
-  mouth: 8,
-  nose: 8,
-  eyes: 8,
-  brows: 4,
-  glasses: 3,
-  glassesColor: 5,
-  piercings: 8,
-  headcoverings: 3,
-  headcoveringsColor: 5
-};
-
-//Format number value with leading 0 if needed
-function formatValue(n) {
-  n = parseInt(n);
-  n = isNaN(n) ? 1 : n;
-  return n > 9 ? "" + n: "0" + n;
-}
-// Fill in select boxes for various parts.
-// buildSelect(beard, 3) will fill the beard selector with 3 options.
-function buildSelect(part,num) {
-  var $obj = $('#select_' + part)
-    .attr("type", "range")
-    .attr("min", 1)
-    .attr("max", num);
-}
-
-// Make a face from the values in the dropdowns.
-function changeSlider() {
-  $(this).rangeslider("update", true);
-  buildFace();
-}
-
-//Updates slider value & gemerates face while dragging slider
-function updateSlider(position, value, element) {
-  var $this = $(element).val(value).change();
-  buildFace();
-}
-
 //Build face images based on values
+function getCurrentFaceData() {
+  flatObjects = {};
+  $.each(sections, function(section, sectionData) {
+    $.each(sectionData.options, function(option, optionData) {
+      $field = $("#select_" + option);
+      $toggle = optionData.hasToggle ? $("#toggle_" + option) : false;
+      $hiddenBy = optionData.hiddenBy ? $("#toggle_" + hiddenBy) : false;
+
+      shown = true;
+      if ($toggle !== false && $toggle.length) {
+        shown = $toggle.is(":checked") ? true : false;
+      }
+      if ($hiddenBy !== false && $hiddenBy.length) {
+        shown = $hiddenBy.is(":checked") ? false : shown;
+      }
+    });
+  });
+}
+
 function buildFace() {
   var $face = $('#faceContainer').empty(),
     faceHtml = $face.get(0),
-    faceCanvas = document.getElementById("faceCanvas"),
-    faces = {
-      bg: {
-        show: true,
-        value: formatValue($('#select_bg').val()),
-        color: null
-      },
-      face: {
-        show: true,
-        value: formatValue($('#select_face').val()),
-        color: formatValue($('#select_skin').val())
-      },
-      ear: {
-        show: true,
-        value: null,
-        color: formatValue($('#select_skin').val())
-      },
-      nose: {
-        show: true,
-        value: formatValue($('#select_nose').val()),
-        color: null
-      },
-      mouth: {
-        show: true,
-        value: formatValue($('#select_mouth').val()),
-        color: null
-      },
-      eyes: {
-        show: true,
-        value: formatValue($('#select_eyes').val()),
-        color: null
-      },
-      brows: {
-        show: true,
-        value: formatValue($('#select_brows').val()),
-        color: formatValue($('#select_hairColor').val())
-      },
-      beard: {
-        show: $('#check_beard').is(':checked') ? true : false,
-        value: formatValue($('#select_beard').val()),
-        color: formatValue($('#select_hairColor').val())
-      },
-      hair: {
-        show: $('#check_hair').is(':checked') ? true : false,
-        value: formatValue($('#select_hair').val()),
-        color: formatValue($('#select_hairColor').val())
-      },
-      headcoverings: {
-        show: $('#check_headcoverings').is(':checked') ? true : false,
-        value: formatValue($('#select_headcoverings').val()),
-        color: formatValue($('#select_headcoveringsColor').val())
-      },
-      glasses: {
-        show: $('#check_glasses').is(':checked') ? true : false,
-        value: formatValue($('#select_glasses').val()),
-        color: formatValue($('#select_glassesColor').val())
-      },
-      piercings: {
-        show: $('#check_piercings').is(':checked') ? true : false,
-        value: formatValue($('#select_piercings').val()),
-        color: null
-      },
-    };
+    faceCanvas = document.getElementById("faceCanvas");
+    faceSettings = currentFaceData();
 
   $.each(faces, function(key, part) {
     var srcFormat1 = "img/{0}/{0}_{1}.png",
@@ -131,40 +44,6 @@ function buildFace() {
         .attr("src", src)
     }
   });
-}
-
-//Set a random slider value
-function randomSliderValue() {
-  var $this = $(this),
-    max = $this.attr("max"),
-    min = 1,
-    random = null;
-
-  random = Math.floor(Math.random() * (max - min + 1)) + min;
-  $this.val(random).rangeslider("update", true);
-}
-
-//Set a random checkbox value
-function randomCheckValue() {
-  var $this = $(this)
-  $this.attr('checked', (Math.random() >= 0.5) ? true : false);
-}
-
-// Make a random face.
-function randomFace() {
-  $('.slider').each(randomSliderValue);
-  $('.checks').each(randomCheckValue);
-  buildFace();
-}
-
-//Init rangeslider object & handle applicable emoji
-function initRangeSlider() {
-  var $this = $(this),
-    handle = ($this.data("handle")),
-    args = (typeof handle === "string") ?
-      {polyfill: false, handleClass: 'rangeslider__handle emoji ' + handle, onSlide: function(p, v) {updateSlider(p, v, this)}}:
-      {polyfill: false, onSlide: function(p, v) {updateSlider(p, v, this)}};
-  $this.rangeslider(args);
 }
 
 function downloadAvatar() {
@@ -196,12 +75,16 @@ function downloadAvatar() {
 
 $(document).ready(function () {
   // Fill options in select boxes.
-  $.each( choices, function( key, value ) {
-    buildSelect(key, value);
-  });
-  // $(".slider").slider();
-  $('input[type=range]').each(initRangeSlider).on('change', changeSlider);
-  $('.checks').on('change', buildFace);
+  // $.each( choices, function( key, value ) {
+  //   buildSelect(key, value);
+  // });
+  //
+  // $('input[type=range]').each(initRangeSlider).on('change', changeSlider);
+  // $('.checks').on('change', buildFace);
+  // $('#regenerate').on('click', randomFace).trigger('click');
+  // $('#download').on('click', downloadAvatar);
+
+  buildControls();
   $('#regenerate').on('click', randomFace).trigger('click');
   $('#download').on('click', downloadAvatar);
 });
