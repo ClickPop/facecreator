@@ -35,11 +35,12 @@ var paths = {
             "./" + jsFolder + "/" + vendorFolder + "/rangeslider/rangeslider.js",
         ],
         src: [
-            "./" + jsFolder + "/" + srcFolder + "/prototypes.js",
+            "./" + jsFolder + "/" + srcFolder + "/functions/**/*.js",
+            "./" + jsFolder + "/" + srcFolder + "/options/**/*.js",
             "./" + jsFolder + "/" + srcFolder + "/main.js"
         ],
         watch: [
-            "./" + jsFolder + "/" + srcFolder + "/**.js"
+            "./" + jsFolder + "/" + srcFolder + "/**/*.js"
         ]
     },
     styles: {
@@ -48,7 +49,7 @@ var paths = {
         ],
         watch: [
             "./" + sassFolder + "/main.scss",
-            "./" + jsFolder + "/" + incFolder + "/**.scss"
+            "./" + sassFolder + "/" + incFolder + "/**/*.scss"
         ]
     },
     replace: [

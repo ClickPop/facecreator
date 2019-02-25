@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Access-Control-Allow-Origin" content="*" />
-  <title>Face Generator</title>
+  <title>Friendly Faces</title>
 
   <link rel="author" href="humans.txt">
   <link rel="stylesheet" href="css/main.css">
@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-4 py-3 text-center">
-        <img src="img/Friendly_Faces.png" alt="The Friendly Faces logo" width="180" class="mb-2" />
+        <img src="img/Friendly_Faces.png" alt="The Friendly Faces logo" width="180" class="mb-2">
         <div class="face-wrapper">
           <div id="faceImage"></div>
           <div id="faceContainer"></div>
@@ -24,150 +24,7 @@
       </div>
 
       <div class="col-12 col-lg-8 py-3">
-        <div id="accordion">
-
-          <!-- Face Controls -->
-          <button class="btn btn-block text-left btn-secondary mb-2" id="faceHeading" data-toggle="collapse" data-target="#faceGroup" aria-expanded="true" aria-controls="faceGroup">
-            Face
-          </button>
-
-          <div id="faceGroup" class="collapse" aria-labelledby="faceHeading" data-parent="#accordion">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_skin">Skin Tone</label>
-                  <input id="select_skin" type="text" class="slider">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_face">Face</label>
-                  <input id="select_face" type="text" class="slider" data-handle="face">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_mouth">Mouth</label>
-                  <input id="select_mouth" type="text" class="slider" data-handle="mouth">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_nose">Nose</label>
-                  <input id="select_nose" type="text" class="slider" data-handle="nose">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_eyes">Eyes</label>
-                  <input id="select_eyes" type="text" class="slider" data-handle="eyes">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hair Controls -->
-          <button class="btn btn-block text-left btn-secondary mb-2" id="hairHeading" data-toggle="collapse" data-target="#hairGroup" aria-expanded="true" aria-controls="hairGroup">
-            Hair
-          </button>
-
-          <div id="hairGroup" class="collapse" aria-labelledby="hairHeading" data-parent="#accordion">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_hairColor">Hair Color</label>
-                  <input id="select_hairColor" type="text" class="slider" data-handle="hairColor">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_hair">Hair</label> <label>(Show: <input type="checkbox" value="" id="check_hair" class="checks" aria-label="Show" title="Show"></label>)
-                  <input id="select_hair" type="text" class="slider" data-handle="hair">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_beard">Facial Hair</label> <label>(Show: <input type="checkbox" value="" id="check_beard" class="checks" aria-label="Show" title="Show"></label>)
-                  <input id="select_beard" type="text" class="slider" data-handle="beard">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_brows">Eyebrows</label>
-                  <input id="select_brows" type="text" class="slider" data-handle="brows">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Attire Controls -->
-          <button class="btn btn-block text-left btn-secondary mb-2" id="attireHeading" data-toggle="collapse" data-target="#attireGroup" aria-expanded="true" aria-controls="attireGroup">
-            Attire
-          </button>
-
-          <div id="attireGroup" class="collapse" aria-labelledby="attireHeading" data-parent="#accordion">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_glasses">Glasses</label> <label>(Show: <input type="checkbox" value="" id="check_glasses" class="checks" aria-label="Show" title="Show">)</label>
-                  <input id="select_glasses" type="text" class="slider">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_glassesColor">Glasses Color</label>
-                  <input id="select_glassesColor" type="text" class="slider">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_piercings">Piercings</label> <label>(Show: <input type="checkbox" value="" id="check_piercings" class="checks" aria-label="Show" title="Show">)</label>
-                  <input id="select_piercings" type="text" class="slider">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_headcoverings">Head Covering</label> <label>(Show: <input type="checkbox" value="" id="check_headcoverings" class="checks" aria-label="Show" title="Show"></label>)
-                  <input id="select_headcoverings" type="text" class="slider" data-handle="headcoverings">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_headcoveringsColor">Head Covering Color</label>
-                  <input id="select_headcoveringsColor" type="text" class="slider" data-handle="headcoveringsColor">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Decoration Controls -->
-          <button class="btn btn-block text-left btn-secondary mb-2" id="decorationHeading" data-toggle="collapse" data-target="#decorationGroup" aria-expanded="true" aria-controls="decorationGroup">
-            Background
-          </button>
-
-          <div id="decorationGroup" class="collapse" aria-labelledby="decorationHeading" data-parent="#accordion">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="select_bg">Background</label>
-                  <input id="select_bg" type="text" class="slider">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <div id="controls"><!-- This is where the controls will get generated --></div>
       </div>
     </div>
     <div class="hiddenLink d-none"></div>
