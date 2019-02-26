@@ -3,7 +3,7 @@ if (isset($_REQUEST["f"])){
   // Get parameters
   $file = urldecode($_REQUEST["f"]); // Decode URL-encoded string
   $filePath = sprintf("%s/%s", $_SERVER["DOCUMENT_ROOT"], $file);
-  $filePath = preg_replace('[\/]+', '/', $filePath);
+  $filePath = preg_replace('/[\/]+/', '/', $filePath);
   $fileType = mime_content_type($filePath);
 
   switch($fileType) {
@@ -21,7 +21,7 @@ if (isset($_REQUEST["f"])){
   }
 
   // Process download
-  if (file_exists($filepath) && $fileName !== false) {
+  if (file_exists($filePath) && $fileName !== false) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename="' . $fileName .'"');
