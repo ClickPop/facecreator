@@ -24,7 +24,7 @@ if (isset($_REQUEST["f"])){
   if (file_exists($filepath) && $fileName !== false) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="{$fileName}"');
+    header('Content-Disposition: attachment; filename="' . $fileName .'"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
