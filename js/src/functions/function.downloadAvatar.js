@@ -16,16 +16,6 @@ function downloadAvatar() {
         alert('Error: Are you running locally?');
       }
 
-      // if (image !== null) {
-      //   $('.hiddenLink').empty();
-      //   $link = $("<a>download</a>").appendTo(".hiddenLink");
-      //   $link.attr("href", image)
-      //     .attr("download", "avatar.png")
-      //     .get(0).click();
-      //   // $link.remove();
-      // }
-      // $link = null;
-
       if (imageData !== null) {
         $.ajax({
           url: 'save_image.php',
@@ -34,7 +24,15 @@ function downloadAvatar() {
           },
           type: 'post',
           success: function (response) {
-            console.log(response);
+
+            if (typeof response === "string" && response.indexOf("generated") !== -1) {
+              $('.hiddenLink').empty();
+              $link = $("<a>download</a>").appendTo(".hiddenLink");
+              $link.attr("href", response)
+                .get(0).click();
+              $link.remove();
+              $link = null;
+            }
           }
         });
       }
