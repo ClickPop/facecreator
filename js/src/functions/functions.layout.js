@@ -1,6 +1,8 @@
 /** START: Layout Functions **/
 function buildControls($accordion) {
+  var sectionCount = 0;
   $.each(sections, function(key, value) {
+    sectionCount++;
     buildSectionLayout(key, value, $("#controls"));
   });
 }
@@ -25,12 +27,12 @@ function buildSectionLayout(key, section, $parent = null) {
       .attr("data-section", key)
       .attr("data-toggle", "collapse")
       .attr("data-target", groupSelector)
-      .attr("aria-expanded", "false")
+      .attr("aria-expanded", (sectionCount === 1 ? "true" : "fase"))
       .attr("aria-controls", groupID)
       .text(section.label);
 
     $sectionGroup = $("<div></div>").insertAfter($sectionHeading)
-      .addClass("collapse control-section")
+      .addClass("collapse control-section" + (sectionCount === 1 ? " show" : ""))
       .attr("id", groupID)
       .attr("aria-labelledby", headingID)
       .attr("data-parent", parentSelector)
