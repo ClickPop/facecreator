@@ -13,7 +13,7 @@ function triggerDownload(canvas) {
   try {
     canvas.toBlob(function(blob) {
       var $link = $("<a>download</a>")
-        .appendTo(".hiddenLink");
+        .appendTo(".hiddenLink")
         .attr("href", "#")
         .on("click", function(e) {
           e.preventDefault();
