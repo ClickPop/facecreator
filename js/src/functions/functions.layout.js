@@ -1,6 +1,7 @@
 /** START: Layout Functions **/
+var sectionCount = null;
 function buildControls($accordion) {
-  var sectionCount = 0;
+  sectionCount = 0;
   $.each(sections, function(key, value) {
     sectionCount++;
     buildSectionLayout(key, value, $("#controls"));
