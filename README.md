@@ -30,10 +30,12 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [ ] Ability to [reposition any of the elements](https://github.com/ClickPop/facecreator/issues/14) (adjust `top` and `left` css values).
 - [x] Ability to download as image.
 - [ ] Ability to download different sizes of image (what dimensions?).
+- [x] Optimize interface for small screens.
+- [ ] Ability to share characters (customize the url with piece numbers).
 
 ## Images to add
 - [x] Glasses
 - [ ] Freckles and beauty marks
-- [ ] Hijab
-- [ ] Turban
+- [x] Hijab
+- [x] Turban
 - [x] Piercings
