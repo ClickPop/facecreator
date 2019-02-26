@@ -26,10 +26,10 @@ function downloadAvatar() {
               $('.hiddenLink').empty();
               linkHref = "download.php?f=" + encodeURIComponent(response);
               $link = $("<a>download</a>").appendTo(".hiddenLink");
-              $link.attr("href", response)
+              $link.attr("href", linkHref)
                 .get(0).click();
-              // $link.remove();
-              // $link = null;
+              $link.remove();
+              $link = null;
             }
           }
         });
