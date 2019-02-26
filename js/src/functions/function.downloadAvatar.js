@@ -12,7 +12,7 @@ function downloadAvatar() {
 function triggerDownload(canvas) {
   try {
     canvas.toBlob(function(blob) {
-      $link = $("<a>download</a>").appendTo(".hiddenLink");
+      var $link = $("<a>download</a>").appendTo(".hiddenLink");
       $link.attr("href", "#")
         .get(0).on("click", function(e) {
           e.preventDefault();
@@ -22,7 +22,6 @@ function triggerDownload(canvas) {
       $link = null;
     });
   } catch(e) {
-    imageData = null;
     console.error("Error: Tainted Canvas... Are you running locally?");
     alert('Error: Are you running locally?');
   }
