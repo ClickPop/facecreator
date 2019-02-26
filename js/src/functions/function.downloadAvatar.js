@@ -3,7 +3,7 @@ function downloadAvatar() {
     $faceImage = $('#faceImage').empty(),
     $button = $(this),
     $link = null;
-  html2canvas(faceHtml, {logging: false, allowTaint: true, backgroundColor: null}).then(function(canvas) {
+  html2canvas(faceHtml, {logging: false, backgroundColor: null}).then(function(canvas) {
       $('#download').prop("disabled", true);
       setTimeout(triggerDownload(canvas), 700);
   });
