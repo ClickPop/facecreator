@@ -28,8 +28,8 @@ function downloadAvatar() {
               $link = $("<a>download</a>").appendTo(".hiddenLink");
               $link.attr("href", response)
                 .get(0).click();
-              $link.remove();
-              $link = null;
+              // $link.remove();
+              // $link = null;
             }
           }
         });
