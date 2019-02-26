@@ -117,6 +117,31 @@
   }
 }
 
+.btn-sections {
+  background: #ffffff;
+  border-bottom: 0;
+  border-color: #9aa9b7;
+  border-radius: 0;
+  color: #333333;
+
+  &:hover {
+    background: #fafafa;
+    border-color: #9aa9b7;
+    color: #333333;
+  }
+}
+
+#controls {
+  border-bottom: 1px solid #9aa9b7;
+}
+
+.control-section {
+  border-color: #9aa9b7;
+  border-style: solid;
+  border-width: 0 1px;
+  padding: 5px 15px 10px;
+}
+
 
 // Small Screen Styles
 @media (max-width:991px) {

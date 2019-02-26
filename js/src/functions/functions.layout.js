@@ -20,7 +20,7 @@ function buildSectionLayout(key, section, $parent = null) {
     && section !== null && typeof section === "object") {
 
     $sectionHeading = $("<button></button>").appendTo($parent)
-      .addClass("btn btn-block text-left btn-secondary mb-2 control-heading")
+      .addClass("btn btn-block btn-sections text-left btn-secondary control-heading")
       .attr("id", headingID)
       .attr("data-section", key)
       .attr("data-toggle", "collapse")
