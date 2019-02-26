@@ -175,17 +175,18 @@ div#faceContainer {
   color: $facePurple;
   font-weight: bold;
 
-  &:hover {
+  &:hover. &:focus {
     background: #fafafa;
     border-color: $facePurple;
     color: $facePurple;
+    outline: 0;
   }
 
   &:visited,
   &:active {
     background-color: $faceYellow !important;
     color: $facePurple !important;
-    outline: none;
+    outline: 0;
   }
 }
 
