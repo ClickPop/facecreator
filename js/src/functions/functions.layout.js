@@ -36,6 +36,8 @@ function buildSectionLayout(key, section, $parent = null) {
       .attr("data-parent", parentSelector)
       .attr("data-section", key);
 
+    $('#faceGroup').addClass("show");
+
     $sectionRow = $("<div></div>").appendTo($sectionGroup)
       .addClass("row");
 

@@ -17,6 +17,13 @@
   top: 0;
 }
 
+.logo {
+  margin-left: -90px;
+  position: absolute;
+  top: 15px;
+  z-index: 100;
+}
+
 // Set z-index for the different face parts.
 #bg { z-index: 1; }
 #face { z-index: 2; }
@@ -115,10 +122,8 @@
 @media (max-width:991px) {
   .logo {
     margin-left: -60px;
-    position: absolute;
     top: 6px;
     width: 120px;
-    z-index: 100;
   }
 
   #faceContainer {
