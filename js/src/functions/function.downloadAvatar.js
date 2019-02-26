@@ -12,9 +12,10 @@ function downloadAvatar() {
 function triggerDownload(canvas) {
   try {
     canvas.toBlob(function(blob) {
-      var $link = $("<a>download</a>").appendTo(".hiddenLink");
-      $link.attr("href", "#")
-        .get(0).on("click", function(e) {
+      var $link = $("<a>download</a>")
+        .appendTo(".hiddenLink");
+        .attr("href", "#")
+        .on("click", function(e) {
           e.preventDefault();
           saveAs(blob, "FriendlyFace.png")
         }).trigger("click");
