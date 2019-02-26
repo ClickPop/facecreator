@@ -3,15 +3,36 @@ function downloadAvatar() {
     $faceImage = $('#faceImage').empty(),
     $button = $(this),
     $link = null;
-  html2canvas(faceHtml, {logging: false, backgroundColor: null}).then(function(canvas) {
+  html2canvas(faceHtml, {logging: false, allowTaint: true, backgroundColor: null}).then(function(canvas) {
       $('#download').prop("disabled", true);
-      console.log("wait?");
       setTimeout(triggerDownload(canvas), 700);
   });
 }
 
 function triggerDownload(canvas) {
-  console.log("waited");
+  var blob = null;
+
+  try {
+    blob = canvas.toBlob();
+  } catch(e) {
+    imageData = null;
+    console.error("Error: Tainted Canvas... Are you running locally?");
+    alert('Error: Are you running locally?');
+  }
+
+  if (blob !== null) {
+    $link = $("<a>download</a>").appendTo(".hiddenLink");
+    $link.attr("href", "#")
+      .get(0).on("click", function(e) {
+        e.preventDefault();
+        FileSaver.saveAs(blob, "FriendFace.png")
+      }).trigger("click");
+    $link.remove();
+    $link = null;
+  }
+}
+
+function triggerDownloadOld(canvas) {
   var imageData = null;
   try {
     imageData = canvas.toDataURL("image/png").replace("data:image/png;base64,", "");

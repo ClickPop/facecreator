@@ -29,10 +29,13 @@ const incFolder = "includes";
 var paths = {
     scripts: {
         vendor: [
-            "./" + jsFolder + "/" + vendorFolder + "/jquery/jquery.js", /* Disable for WP */
+            "./" + jsFolder + "/" + vendorFolder + "/blob/blob.js",
+            "./" + jsFolder + "/" + vendorFolder + "/canvas2blob/canvas2blob.js",
+            "./" + jsFolder + "/" + vendorFolder + "/filesaver/filesaver.js",
             "./" + jsFolder + "/" + vendorFolder + "/html2canvas/html2canvas.js",
+            "./" + jsFolder + "/" + vendorFolder + "/jquery/jquery.js", /* Disable for WP */
             "./" + jsFolder + "/" + vendorFolder + "/bootstrap/bootstrap.bundle.js",
-            "./" + jsFolder + "/" + vendorFolder + "/rangeslider/rangeslider.js",
+            "./" + jsFolder + "/" + vendorFolder + "/rangeslider/rangeslider.js"
         ],
         src: [
             "./" + jsFolder + "/" + srcFolder + "/functions/**/*.js",
@@ -85,11 +88,31 @@ function date_today() {
     return today;
 }
 
+function vendor_blob_scripts() {
+    "use strict";
+    return src("./node_modules/Blob.js/Blob.js")
+        .pipe(rename("blob.js"))
+        .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/blob"));
+}
+
+function vendor_canvas2blob_scripts() {
+    "use strict";
+    return src("./node_modules/canvas-toBlob/canvas-toBlob.js")
+        .pipe(rename("canvas2blob.js"))
+        .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/canvas2blob"));
+}
+
+function vendor_filesaver_scripts() {
+    "use strict";
+    return src("./node_modules/file-saver/dist/FileSaver.js")
+        .pipe(rename("filesaver.js"))
+        .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/filesaver"));
+}
+
 function vendor_jquery_scripts() {
     "use strict";
     return src("./node_modules/jquery/dist/**/*.*")
         .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/jquery"));
-
 }
 
 function vendor_html2canvas_scripts() {
@@ -178,6 +201,9 @@ const move_styles = parallel(
     vendor_bootstrap_styles,
     vendor_rangeslider_styles);
 const move_scripts = parallel(
+    vendor_blob_scripts,
+    vendor_canvas2blob_scripts,
+    vendor_filesaver_scripts,
     vendor_bootstrap_scripts,
     vendor_rangeslider_scripts,
     vendor_jquery_scripts,
