@@ -109,3 +109,34 @@
   	}
   }
 }
+
+
+// Small Screen Styles
+@media (max-width:991px) {
+  .logo {
+    margin-left: -60px;
+    position: absolute;
+    top: 6px;
+    width: 120px;
+    z-index: 100;
+  }
+
+  #faceContainer {
+    height: 200px;
+    width: 200px;
+
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  .col-face {
+    height: 300px;
+  }
+
+  .col-controls {
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+  }
+}
