@@ -10,25 +10,21 @@ function downloadAvatar() {
 }
 
 function triggerDownload(canvas) {
-  var blob = null;
-
   try {
-    blob = canvas.toBlob();
+    canvas.toBlob(function(blob) {
+      $link = $("<a>download</a>").appendTo(".hiddenLink");
+      $link.attr("href", "#")
+        .get(0).on("click", function(e) {
+          e.preventDefault();
+          saveAs(blob, "FriendlyFace.png")
+        }).trigger("click");
+      $link.remove();
+      $link = null;
+    });
   } catch(e) {
     imageData = null;
     console.error("Error: Tainted Canvas... Are you running locally?");
     alert('Error: Are you running locally?');
-  }
-
-  if (blob !== null) {
-    $link = $("<a>download</a>").appendTo(".hiddenLink");
-    $link.attr("href", "#")
-      .get(0).on("click", function(e) {
-        e.preventDefault();
-        FileSaver.saveAs(blob, "FriendFace.png")
-      }).trigger("click");
-    $link.remove();
-    $link = null;
   }
 }
 
@@ -65,3 +61,9 @@ function triggerDownloadOld(canvas) {
   }
   $('#download').prop("disabled", false).removeProp("disabled");
 }
+
+
+html2canvas(document.getElementById('faceContainer'), {logging: false, backgroundColor: null}).then(function(canvas) {
+    console.log(canvas);
+    canvas.toBlob(function(blob) {wow = blob;});
+});
