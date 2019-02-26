@@ -29,7 +29,7 @@ const incFolder = "includes";
 var paths = {
     scripts: {
         vendor: [
-            "./" + jsFolder + "/" + vendorFolder + "/blob/blob.js",
+            "./" + jsFolder + "/" + srcFolder + "/polyfill/blob.js",
             "./" + jsFolder + "/" + vendorFolder + "/canvas2blob/canvas2blob.js",
             "./" + jsFolder + "/" + vendorFolder + "/filesaver/filesaver.js",
             "./" + jsFolder + "/" + vendorFolder + "/html2canvas/html2canvas.js",
@@ -86,13 +86,6 @@ function date_today() {
 
     today = year + "/" + month + "/" + day;
     return today;
-}
-
-function vendor_blob_scripts() {
-    "use strict";
-    return src("./node_modules/Blob.js/Blob.js")
-        .pipe(rename("blob.js"))
-        .pipe(dest("./" + jsFolder + "/" + vendorFolder + "/blob"));
 }
 
 function vendor_canvas2blob_scripts() {
@@ -201,7 +194,6 @@ const move_styles = parallel(
     vendor_bootstrap_styles,
     vendor_rangeslider_styles);
 const move_scripts = parallel(
-    vendor_blob_scripts,
     vendor_canvas2blob_scripts,
     vendor_filesaver_scripts,
     vendor_bootstrap_scripts,
