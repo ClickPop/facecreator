@@ -5,11 +5,13 @@ function downloadAvatar() {
     $link = null;
   html2canvas(faceHtml, {logging: false, backgroundColor: null}).then(function(canvas) {
       $('#download').prop("disabled", true);
+      console.log("wait?");
       setTimeout(triggerDownload(canvas), 700);
   });
 }
 
 function triggerDownload(canvas) {
+  console.log("waited");
   var imageData = null;
   try {
     imageData = canvas.toDataURL("image/png").replace("data:image/png;base64,", "");
