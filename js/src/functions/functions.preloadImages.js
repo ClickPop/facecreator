@@ -1,8 +1,7 @@
 var preloader = [];
 
 function registerPreload(key) {
-  console.log(loaded, this);
-  console.log(key, preloader[key]);
+  console.log("loaded", key, this, preloader[key]);
 }
 
 function preloadImages() {
