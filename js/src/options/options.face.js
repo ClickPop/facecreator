@@ -2,7 +2,7 @@ var sections = {
   face: {
     label: "Face",
     options: {
-      skin: colorOption("Skin Tone", 5),
+      skin: colorOption("Skin Tone", 7),
       face: standardOption("Face", 4, true, "skin"),
       mouth: standardOption("Mouth", 8),
       nose: standardOption("Nose", 8),
@@ -12,7 +12,7 @@ var sections = {
   hair: {
     label: "Hair",
     options: {
-      hairColor: colorOption("Hair Color", 5),
+      hairColor: colorOption("Hair Color", 9),
       hair: toggleOptionHiddenBy("Hair", 9, "headcoverings", true, "hairColor"),
       beard: toggleOption("Facial Hair", 3, true, "hairColor"),
       brows: standardOption("Eyebrows", 4, true, "hairColor")

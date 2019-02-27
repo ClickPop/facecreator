@@ -175,7 +175,8 @@ div#faceContainer {
   color: $facePurple;
   font-weight: bold;
 
-  &:hover. &:focus {
+  &:hover,
+  &:focus {
     background: #fafafa;
     border-color: $facePurple;
     color: $facePurple;
