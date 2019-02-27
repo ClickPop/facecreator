@@ -15,6 +15,7 @@ const replace = require("gulp-string-replace");
 const environments = require("gulp-environments");
 const rename = require("gulp-rename");
 const imagemin = require("gulp-imagemin");
+const imageminOptipng = require('imagemin-optipng-progressive');
 const p = require("./package.json");
 
 const envBuild = environments.make("build");
@@ -31,7 +32,7 @@ const incFolder = "includes";
 var paths = {
   scripts: {
     vendor: [
-      "./" + jsFolder + "/" + srcFolder + "/polyfill/blob.js",
+      "./" + jsFolder + "/" + srcFolder + "/polyfill/**/*.js",
       "./" + jsFolder + "/" + vendorFolder + "/canvas2blob/canvas2blob.js",
       "./" + jsFolder + "/" + vendorFolder + "/filesaver/filesaver.js",
       "./" + jsFolder + "/" + vendorFolder + "/html2canvas/html2canvas.js",
@@ -181,7 +182,7 @@ function build_scripts() {
 function build_images() {
   "use strict";
   return src(paths.images.src)
-  .pipe(imagemin())
+  .pipe(imagemin({use: [imageminOptipng()]}))
   .pipe(dest("./" + imgFolder + "/" + distFolder));
 }
 

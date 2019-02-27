@@ -25,6 +25,7 @@
     "file-saver": "^2.0.1",
     "gulp-imagemin": "^5.0.3",
     "html2canvas": "^1.0.0-alpha.12",
+    "imagemin-optipng-progressive": "^0.0.1",
     "jquery": "^3.3.1",
     "rangeslider.js": "andreruffert/rangeslider.js"
   },
