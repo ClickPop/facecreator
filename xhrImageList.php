@@ -17,7 +17,7 @@ function getDirContents($dir, &$results = array()){
   $files = scandir($dir);
   foreach($files as $key => $value){
     $path = realpath($dir.DIRECTORY_SEPARATOR.$value);
-    $relativePath = $imagesRelative.DIRECTORY_SEPARATOR.$value;
+    $relativePath = str_replace($_SERVER["DOCUMENT_ROOT"] . "/", "", $path);
 
     if(!is_dir($path) && file_exists($path) && in_array(mime_content_type($path), $allowedTypes)) {
           $results[] = $relativePath;
