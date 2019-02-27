@@ -19,8 +19,21 @@
           <div id="faceContainer"></div>
         </div>
 
-        <button id="regenerate" class="btn btn-primary mt-3">Randomize</button>
-        <button id="download" class="btn btn-success mt-3">Download</button>
+        <div class="buttons">
+          <button id="regenerate" class="btn btn-primary mt-3">Randomize</button>
+          <!-- <button id="download" class="btn btn-success mt-3">Download</button> -->
+          <div class="dropdown download-dropdown">
+            <a class="btn btn-success mt-3 dropdown-toggle" href="#" role="button" id="downloadMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Download
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="downloadMenu">
+              <a class="dropdown-item download" data-size=250 href="#">Large (250px)</a>
+              <a class="dropdown-item download" data-size=140 href="#">Medium (140px)</a>
+              <a class="dropdown-item download" data-size=80 href="#">Small (80px)</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-12 col-lg-8 py-3 col-controls">

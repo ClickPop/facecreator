@@ -1,13 +1,19 @@
-function downloadAvatar() {
-  var faceHtml = document.getElementById('faceContainer'),
+function downloadAvatar(element) {
+  var $this = $(element),
+    avatarSize = $this.data("size"),
+    $faceContainer = $('#faceContainer').eq(0);
+    faceHtml = $faceContainer.get(0);
     $faceImage = $('#faceImage').empty(),
     $button = $(this),
-    $link = null;
+    $link = null,
+    resizedCanvas = null;
+
+  avatarSize = (isNaN(avatarSize)) ? 250 : avatarSize;
   html2canvas(faceHtml, {logging: false, allowTain: true, backgroundColor: null}).then(function(canvas) {
-      $('#download').prop("disabled", true);
+      resizedCanvas = resizeCanvas(canvas, avatarSize, avatarSize);
 
       try {
-        canvas.toBlob(function(blob) {
+        resizedCanvas.toBlob(function(blob) {
           $link = $("<a>download</a>")
             .appendTo(".hiddenLink")
             .attr("href", "#")
@@ -23,8 +29,6 @@ function downloadAvatar() {
         alert('Error: Are you running locally?');
       }
 
-      saveAvatar();
-
-      $('#download').prop("disabled", false).removeProp("disabled");
+      saveAvatar(canvas);
   });
 }

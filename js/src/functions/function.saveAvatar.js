@@ -1,4 +1,4 @@
-function savaAvatar(canvas) {
+function saveAvatar(canvas) {
   var imageData = null;
   try {
     imageData = canvas.toDataURL("image/png").replace("data:image/png;base64,", "");

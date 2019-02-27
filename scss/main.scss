@@ -54,6 +54,7 @@
   left: 0;
   position: absolute;
   top: 0;
+  width: 100%; height: auto;
 }
 
 .logo {
@@ -175,28 +176,6 @@
 }
 
 
-// Button Overrides
-.btn-primary {
-  background-color: $facePurple;
-  border-color: $facePurple;
-
-  &:hover {
-    background-color: darken($facePurple, 10%);
-    border-color: $facePurple;
-  }
-}
-
-.btn-success {
-  background-color: $faceGreen;
-  border-color: $faceGreen;
-
-  &:hover {
-    background-color: darken($faceGreen, 10%);
-    border-color: $faceGreen;
-  }
-}
-
-
 // Accordion
 .btn-sections {
   background: #ffffff;
@@ -236,6 +215,17 @@
   border-style: solid;
   border-width: 0 $borderWidth;
   padding: 5px 15px 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > button, > div {
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
+
 }
 
 
