@@ -40,3 +40,4 @@ To generate front-end assets (JS/CSS files) from their associated source files, 
 - [x] Turban
 - [x] Piercings
 - [x] More hair colors
+- [x] Eye color
