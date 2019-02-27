@@ -6,7 +6,8 @@ var sections = {
       face: standardOption("Face", 4, true, "skin"),
       mouth: standardOption("Mouth", 8),
       nose: standardOption("Nose", 8),
-      eyes: standardOption("Eyes", 8)
+      eyes: standardOption("Eyes", 8, true, 'eyesColor'),
+      eyesColor: colorOption('Eye Color', 4)
     }
   },
   hair: {
