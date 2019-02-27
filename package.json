@@ -1,6 +1,6 @@
 {
   "name": "facecreator",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A tool to create simple illustrated avatars.",
   "main": "index.htm",
   "scripts": {
