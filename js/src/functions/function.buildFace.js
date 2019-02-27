@@ -1,7 +1,7 @@
 function buildFace() {
   var $face = $('#faceContainer').empty(),
-    srcFormat1 = "img/{0}/{0}_{1}.png",
-    srcFormat2 = "img/{0}/{0}_{1}_{2}.png",
+    srcFormat1 = "img/dist/{0}/{0}_{1}.png",
+    srcFormat2 = "img/dist/{0}/{0}_{1}_{2}.png",
     faceHtml = $face.get(0),
     faceCanvas = document.getElementById("faceCanvas");
     faceSettings = getCurrentFaceData();
@@ -20,7 +20,7 @@ function buildFace() {
     } else if (currentColor !== null && currentValue === null) {
       src = srcFormat1.format(key, currentColor);
     }
-    
+
     if (src !== null && part.show) {
       $obj = $("<img>").appendTo($face)
         .addClass("image")
