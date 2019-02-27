@@ -2,6 +2,41 @@
 @import 'vendor/bootstrap/bootstrap';
 @import 'vendor/rangeslider/rangeslider';
 
+.loady {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: #fff;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 100;
+  .content {
+    display: flex;
+    color: $faceGreen;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .progress {
+    max-width: 500px;
+    min-width: 270px;
+    background-color: $faceYellow;
+    .progress-bar {
+      background-color: $facePurple;
+    }
+  }
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+}
+
 #faceContainer {
   border-radius: 50%;
   height: 293px;
@@ -9,12 +44,24 @@
   overflow: hidden;
   position: relative;
   width: 293px;
+
+  &.square {
+    border-radius: 5px;
+  }
 }
 
 .image {
   left: 0;
   position: absolute;
   top: 0;
+  width: 100%; height: auto;
+}
+
+.logo {
+  margin-left: -90px;
+  position: absolute;
+  top: 15px;
+  z-index: 100;
 }
 
 // Set z-index for the different face parts.
@@ -29,59 +76,183 @@
 #hair { z-index: 9; }
 #piercings { z-index: 10; }
 #glasses { z-index: 11; }
+#headcoverings { z-index: 12; }
 
-.rangeslider__fill {
-	background: $warning;
+// Position face better.
+#face,
+#beard,
+#ear,
+#mouth,
+#nose,
+#eyes,
+#brows,
+#hair,
+#piercings,
+#glasses,
+#headcoverings {
+  top: -4px;
 }
-.rangeslider__handle {
-	&.emoji {
-		&:after {
-			background: transparent;
-			border-color: 0;
-			width: auto; height: 22px;
-			line-height: 22px;
-			text-align: center;
-		}
 
-		&.face {
-			&:after {
-				content: '\01F600';
-			}
-		}
-		&.mouth {
-			&:after {
-				content: '\01F444';
-			}
-		}
-		&.eyes {
-			&:after {
-				content: '\01F441';
-			}
-		}
-		&.nose {
-			&:after {
-				content: '\01F443';
-			}
-		}
-		&.hair {
-			&:after {
-				content: '\01F488';
-			}
-		}
-		&.brows {
-			&:after {
-				content: '\01F41B';
-			}
-		}
-		&.beard {
-			&:after {
-				content: '\01F9D4';
-			}
-		}
-		&.hairColor {
-			&:after {
-				content: '\01F3A8';
-			}
-		}
-	}
+.toggle-label {
+  margin-left: 1rem;
+  &:before { content: '('; }
+  &:after { content: ')'; }
+}
+.rangeslider {
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
+
+  .rangeslider__fill {
+    background-color: $faceYellow;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
+  }
+
+  .rangeslider__handle {
+  	&.emoji {
+  		&:after {
+  			background: transparent;
+  			border-color: 0;
+  			width: auto; height: 22px;
+  			line-height: 22px;
+  			text-align: center;
+  		}
+
+  		&.face {
+  			&:after {
+  				content: '\01F600';
+  			}
+  		}
+  		&.mouth {
+  			&:after {
+  				content: '\01F444';
+  			}
+  		}
+  		&.eyes {
+  			&:after {
+  				content: '\01F441';
+  			}
+  		}
+  		&.nose {
+  			&:after {
+  				content: '\01F443';
+  			}
+  		}
+  		&.hair {
+  			&:after {
+  				content: '\01F488';
+  			}
+  		}
+  		&.brows {
+  			&:after {
+  				content: '\01F41B';
+  			}
+  		}
+  		&.beard {
+  			&:after {
+  				content: '\01F9D4';
+  			}
+  		}
+  		&.hairColor {
+  			&:after {
+  				content: '\01F3A8';
+  			}
+  		}
+      &.headcoverings {
+        &:after {
+          content: '\01F9D5';
+        }
+      }
+      &.glasses {
+        &:after {
+          content: '\01F453';
+        }
+      }
+      &.piercings {
+        &:after {
+          content: '\01F48E';
+        }
+      }
+  	}
+  }
+}
+
+
+// Accordion
+.btn-sections {
+  background: #ffffff;
+  border-bottom: 0;
+  border-color: $facePurple;
+  border-radius: 0;
+  border-width: $borderWidth;
+  color: $facePurple;
+  font-weight: bold;
+
+  &:hover,
+  &:focus {
+    background: #fafafa;
+    border-color: $facePurple;
+    color: $facePurple;
+    outline: 0;
+  }
+
+  &:visited,
+  &:active {
+    background-color: $faceYellow !important;
+    color: $facePurple !important;
+    outline: 0;
+  }
+}
+
+#faceHeading {
+  border-radius: 5px 5px 0 0;
+}
+
+#controls {
+  border-bottom: $borderWidth solid $facePurple;
+}
+
+.control-section {
+  border-color: $facePurple;
+  border-style: solid;
+  border-width: 0 $borderWidth;
+  padding: 5px 15px 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > button, > div {
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
+
+}
+
+
+// Small Screen Styles
+@media (max-width:991px) {
+  .logo {
+    margin-left: -60px;
+    top: 6px;
+    width: 120px;
+  }
+
+  div#faceContainer {
+    height: 200px;
+    width: 200px;
+
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  .col-face {
+    height: 300px;
+  }
+
+  .col-controls {
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+  }
 }
