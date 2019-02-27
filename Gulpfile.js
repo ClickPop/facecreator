@@ -182,7 +182,7 @@ function build_scripts() {
 function build_images() {
   "use strict";
   return src(paths.images.src)
-  .pipe(imagemin({use: [imageminOptipng()]}))
+  .pipe(envBuild(imagemin({use: [imageminOptipng()]})))
   .pipe(dest("./" + imgFolder + "/" + distFolder));
 }
 

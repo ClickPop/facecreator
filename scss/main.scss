@@ -2,6 +2,41 @@
 @import 'vendor/bootstrap/bootstrap';
 @import 'vendor/rangeslider/rangeslider';
 
+.loady {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: #fff;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 100;
+  .content {
+    display: flex;
+    color: $faceGreen;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .progress {
+    max-width: 500px;
+    min-width: 270px;
+    background-color: $faceYellow;
+    .progress-bar {
+      background-color: $facePurple;
+    }
+  }
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+}
+
 #faceContainer {
   border-radius: 50%;
   height: 293px;
