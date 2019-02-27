@@ -14,9 +14,6 @@
     border-radius: 5px;
   }
 }
-div#faceContainer {
-  transition: border-radius .5s ease-in-out;
-}
 
 .image {
   left: 0;
@@ -175,7 +172,8 @@ div#faceContainer {
   color: $facePurple;
   font-weight: bold;
 
-  &:hover. &:focus {
+  &:hover,
+  &:focus {
     background: #fafafa;
     border-color: $facePurple;
     color: $facePurple;
