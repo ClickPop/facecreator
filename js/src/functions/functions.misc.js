@@ -8,12 +8,3 @@ function formatValue(n) {
 
   return n;
 }
-
-function preloadImages() {
-  $.ajax({
-    url: 'xhrImageList.php',
-    success: function(response) {
-      console.log(response);
-    }
-  });
-}
