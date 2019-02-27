@@ -25,7 +25,7 @@ var sections = {
       glassesColor: colorOption("Glasses Color", 5),
       piercings: toggleOption("Piercings", 8),
       headcoverings: toggleOption("Head Coverings", 3, true, "headcoveringsColor"),
-      headcoveringsColor: colorOption("Head Covering Color", 5)
+      headcoveringsColor: colorOption("Head Covering Color", 9)
     }
   },
   decoration: {
