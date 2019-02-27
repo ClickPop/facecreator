@@ -23,13 +23,13 @@ function downloadAvatar() {
         alert('Error: Are you running locally?');
       }
 
-      saveImage();
+      saveAvatar();
 
       $('#download').prop("disabled", false).removeProp("disabled");
   });
 }
 
-function saveImage(canvas) {
+function savaAvatar(canvas) {
   var imageData = null;
   try {
     imageData = canvas.toDataURL("image/png").replace("data:image/png;base64,", "");
@@ -41,7 +41,8 @@ function saveImage(canvas) {
       data: {
         data: imageData
       },
-      type: 'post'
+      type: 'post',
+      success: function(response) {console.log(response);}
     });
   }
 }
