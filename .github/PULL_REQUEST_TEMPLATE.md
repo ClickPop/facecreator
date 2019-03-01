@@ -26,7 +26,7 @@ Please include a summary of the change and which issue is fixed. Please also inc
 
 #### Proposed Documentation Changes
 
-If this Pull Request would require documentation changes, please add them here. Otherwise delete this section.
+If this Pull Request would require documentation changes, please add them here. Otherwise, delete this section.
 
 #### Proposed Release Notes
 
@@ -48,7 +48,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 - [ ] My changes adhere to the corresponding style guide
 - [ ] I have performed a self-review of my changes
-- [ ] I have **commented my code**, particularly in hard-to-understand areas
+- [ ] I have **documented my code**, especially in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation, or detailed proposed changes above
 - [ ] My changes generate no new errors/warnings
 - [ ] I have thoroughly tested my work
