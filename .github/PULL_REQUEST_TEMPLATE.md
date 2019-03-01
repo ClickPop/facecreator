@@ -2,8 +2,9 @@
 
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. (This section can be more detailed than the *Proposed Documentation Changes* section)
 
-#### Type of Change
-<!-- Place an X inside the brackes of the relevant ones, please delete the irrelevant ones.  -->
+### Type of Change
+
+<!-- Place an X inside the brackets of the relevant ones, please delete the irrelevant ones.  -->
 
 - [ ] :bug: Bug fix<!-- Fixes a non-urgent issue, to be included in a future release -->
 - [ ] :sparkles: New feature<!-- Adds/Updates functionality -->
@@ -19,16 +20,17 @@ Please include a summary of the change and which issue is fixed. Please also inc
 - [ ] :wrench: Add/Update Configuration File(s)
 - [ ] :ambulance: **This addresses a critical issue (hotfix)**
 
-#### Addresses Issue(s)
+### Addresses Issue(s)
+
 <!-- Make sure to list any relevant issues, and link them to the right [e.g. - Issue #34 (will link to corresponding issue number] -->
 
 - Issue #
 
-#### Proposed Documentation Changes
+### Proposed Documentation Changes
 
 If this Pull Request would require documentation changes, please add them here. Otherwise, delete this section.
 
-#### Proposed Release Notes
+### Proposed Release Notes
 
 Super brief summary to be included in release notes of future version or hotfix. *(Ideally, 1-2 sentences to be included in release bullet points)*
 
@@ -44,7 +46,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 ---
 
-## Checklist:
+## Checklist
 
 - [ ] My changes adhere to the corresponding style guide
 - [ ] I have performed a self-review of my changes
