@@ -1,7 +1,7 @@
 {
   "name": "facecreator",
   "version": "1.0.2",
-  "description": "A tool to create simple illustrated avatars.",
+  "description": "An inclusive, illustrated avatar creator.",
   "main": "index.htm",
   "scripts": {
     "build": "npm install --silent && gulp build",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/cvasquez/facecreator/issues"
   },
-  "homepage": "https://github.com/cvasquez/facecreator#readme",
+  "homepage": "https://friendlyfaces.co",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "canvas-toBlob": "^1.0.0",
