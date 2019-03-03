@@ -1,4 +1,5 @@
 @import 'includes/variables';
+@import 'includes/emoji';
 @import 'vendor/bootstrap/bootstrap';
 @import 'vendor/rangeslider/rangeslider';
 
@@ -117,80 +118,18 @@ body {
   &:before { content: '('; }
   &:after { content: ')'; }
 }
+
 .rangeslider {
   box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
 
   .rangeslider__fill {
     background-color: $faceYellow;
     box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
+    transition-duration: .2s;
   }
 
   .rangeslider__handle {
-  	&.emoji {
-  		&:after {
-  			background: transparent;
-  			border-color: 0;
-  			width: auto; height: 22px;
-  			line-height: 22px;
-  			text-align: center;
-  		}
-
-  		&.face {
-  			&:after {
-  				content: '\01F600';
-  			}
-  		}
-  		&.mouth {
-  			&:after {
-  				content: '\01F444';
-  			}
-  		}
-  		&.eyes {
-  			&:after {
-  				content: '\01F441';
-  			}
-  		}
-  		&.nose {
-  			&:after {
-  				content: '\01F443';
-  			}
-  		}
-  		&.hair {
-  			&:after {
-  				content: '\01F488';
-  			}
-  		}
-  		&.brows {
-  			&:after {
-  				content: '\01F41B';
-  			}
-  		}
-  		&.beard {
-  			&:after {
-  				content: '\01F9D4';
-  			}
-  		}
-  		&.hairColor {
-  			&:after {
-  				content: '\01F3A8';
-  			}
-  		}
-      &.headcoverings {
-        &:after {
-          content: '\01F9D5';
-        }
-      }
-      &.glasses {
-        &:after {
-          content: '\01F453';
-        }
-      }
-      &.piercings {
-        &:after {
-          content: '\01F48E';
-        }
-      }
-  	}
+    transition-duration: .2s;
   }
 }
 
