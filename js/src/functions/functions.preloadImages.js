@@ -34,39 +34,27 @@ function registerPreload(key) {
 }
 
 function preloadImages() {
-  $.ajax({
-    url: 'xhrImageList.php',
-    success: function(response) {
-      var files = null;
-      var loaderKey = 0;
-      if (typeof response === "object"
-      && response.hasOwnProperty("data")
-      && response.data instanceof Array
-      && response.data.length > 0) {
-        files = response.data;
+  var files = getPreloaderImages();
 
-        if (preloader.length > 0) {
-          for (tempKey in preloader) {
-            if (typeof preloader[tempKey] === "object" && preloader[tempKey] instanceof Image) {
-              preloader[tempKey].src = "";
-              preloader[tempKey] = null;
-            }
-          }
-          preloader = Array();
-        }
-        preloadCount = files.length;
-        preloadedCount = 0;
-
-        for (fileKey in files) {
-          if (typeof files[fileKey] === "string" && files[fileKey].length > 0) {
-            loaderKey = preloader.push(new Image()) - 1;
-            preloader[loaderKey].onload = function() { setTimeout(registerPreload(loaderKey), 5); }
-            preloader[loaderKey].src = files[fileKey];
-          }
-        }
+  if (preloader.length > 0) {
+    for (tempKey in preloader) {
+      if (typeof preloader[tempKey] === "object" && preloader[tempKey] instanceof Image) {
+        preloader[tempKey].src = "";
+        preloader[tempKey] = null;
       }
     }
-  });
+    preloader = Array();
+  }
+  preloadCount = files.length;
+  preloadedCount = 0;
+
+  for (fileKey in files) {
+    if (typeof files[fileKey] === "string" && files[fileKey].length > 0) {
+      loaderKey = preloader.push(new Image()) - 1;
+      preloader[loaderKey].onload = function() { setTimeout(registerPreload(loaderKey), 5); }
+      preloader[loaderKey].src = files[fileKey];
+    }
+  }
 }
 
 function initializePreload() {
@@ -75,4 +63,154 @@ function initializePreload() {
   $loadyBar = $loady.find('.progress-bar');
   setPreloadBarPercentage(preloadPercent);
   fxPreload();
+}
+
+function findOption(searchKey) {
+  var section = null,
+    option = null,
+    rVal = false;
+  for (sectionKey in sections) {
+    var section = sections[sectionKey];
+
+    if (typeof section === "object"
+    && section.hasOwnProperty("options")
+    && typeof section.options === "object") {
+
+      if (section.options.hasOwnProperty(searchKey)
+      && typeof section.options[searchKey] === "object") {
+        rVal = section.options[searchKey];
+      }
+    }
+  }
+
+  return rVal;
+}
+
+function getOptionImages(key, option) {
+
+  var choices = null,
+    colors = null,
+    colorsOption = null,
+    srcFormat1 = "img/dist/{0}/{0}_{1}.png",
+    srcFormat2 = "img/dist/{0}/{0}_{1}_{2}.png",
+    images = Array();
+
+  if (typeof key === "string"
+  && key.length > 0
+  && typeof option === "object") {
+
+
+    choices = (option.hasOwnProperty("choices")
+    && typeof option.choices === "number"
+    && option.choices > 0) ? option.choices : false;
+
+    //Skip if a color selector
+    if (!(option.hasOwnProperty("isColors") && option.isColors)) {
+      //Has Colors
+      if (option.hasOwnProperty("hasColors") && option.hasColors) {
+        if (option.hasOwnProperty("colorsKey")
+        && typeof option.colorsKey === "string"
+        && option.colorsKey.length > 0) {
+          colorsOption = findOption(option.colorsKey);
+
+          if (typeof colorsOption === "object"
+          && colorsOption.hasOwnProperty("isColors")
+          && colorsOption.isColors
+          && colorsOption.hasOwnProperty("choices")
+          && typeof colorsOption.choices === "number"
+          && colorsOption.choices > 0) {
+
+            colors = colorsOption.choices;
+
+            //Count through styles
+            if (choices !== false) {
+              for(count = 1; count <= choices; count++) {
+
+                //Count through colors
+                for (count2 = 1; count2 <= colors; count2++) {
+                  tempFile = srcFormat2.format(key, formatValue(count), formatValue(count2));
+                  images.push(tempFile);
+                }
+
+              }
+            } else {
+              //Count through styles
+              for(count = 1; count <= colors; count++) {
+                tempFile = srcFormat1.format(key, formatValue(count));
+                images.push(tempFile);
+              }
+            }
+
+          }
+        }
+      } else if (choices !== false) { //Everything else
+
+        //Count through styles
+        for(count = 1; count <= choices; count++) {
+          tempFile = srcFormat1.format(key, formatValue(count));
+          images.push(tempFile);
+        }
+
+      }
+    }
+  }
+
+  return images;
+}
+
+function getNonOptionImages() {
+  var images = Array();
+  $("img:not(#faceContainer img)").each(function() {
+    var src = $(this).attr("src");
+    if (typeof src === "string" && src.length > 0) {
+      images.push(src);
+    }
+  });
+
+  return images;
+}
+
+function getPreloaderImages() {
+  var images = Array(),
+    section = null,
+    option = null,
+    bodyImages = null;
+
+  for (sectionKey in sections) {
+    var section = sections[sectionKey];
+
+    if (typeof section === "object"
+    && section.hasOwnProperty("options")
+    && typeof section.options === "object") {
+
+      for (optionKey in section.options) {
+        option = section.options[optionKey];
+
+        tempImages = getOptionImages(optionKey, option);
+        if (typeof tempImages === "object"
+        && tempImages instanceof Array
+        && tempImages.length > 0) {
+          images = images.concat(tempImages);
+        }
+      }
+    }
+  }
+
+  for (optionKey in hiddenOptions) {
+    option = hiddenOptions[optionKey];
+
+    tempImages = getOptionImages(optionKey, option);
+    if (typeof tempImages === "object"
+    && tempImages instanceof Array
+    && tempImages.length > 0) {
+      images = images.concat(tempImages);
+    }
+  }
+
+  tempImages = getNonOptionImages();
+  if (typeof tempImages === "object" && tempImages instanceof Array && tempImages.length > 0) {
+    images = images.concat(tempImages)
+  }
+
+  return images;
 }
