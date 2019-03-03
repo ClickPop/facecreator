@@ -60,10 +60,10 @@ var paths = {
   },
   images: {
     src: [
-      "./" + imgFolder + "/" + srcFolder + "/**/*.{png,gif,jpg,jpeg}"
+      "./" + imgFolder + "/" + srcFolder + "/**/*.{png,gif,jpg,jpeg,svg}"
     ],
     watch: [
-      "./" + imgFolder + "/" + srcFolder + "/**/*.{png,gif,jpg,jpeg}"
+      "./" + imgFolder + "/" + srcFolder + "/**/*.{png,gif,jpg,jpeg,svg}"
     ]
   },
   replace: [
