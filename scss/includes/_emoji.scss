@@ -54,7 +54,8 @@
   &.skin,
   &.eyesColor,
   &.glassesColor,
-  &.headcoveringsColor {
+  &.headcoveringsColor,
+  &.bg {
     .rangeslider__handle:after {
       content: '\01F3A8';
     }
