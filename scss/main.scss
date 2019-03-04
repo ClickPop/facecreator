@@ -203,6 +203,20 @@ body {
 
 }
 
+/** START: Feedback **/
+.feedback-button {
+  position: fixed;
+  top: 25px; right: 0;
+  width: 100px;
+  margin: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: rotate(-90deg);
+  transform-origin: 100% 100%;
+}
+
+/** END: Feedback **/
+
 
 // Small Screen Styles
 @media (max-width:991px) {
