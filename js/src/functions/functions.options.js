@@ -140,3 +140,30 @@ function hiddenOption(colorsKey, hiddenByKey = null) {
   return returnObject;
 }
 /** END: Option Functions **/
+
+function classToggleOption(obj, toggleClass, toggleLabel, toggleLabelSuffix = ":") {
+  var returnObject = null;
+
+  obj = (typeof obj === "object") ? obj : null;
+  toggleClass = (typeof toggleClass === "string") ? toggleClass : false;
+  toggleLabel = (typeof toggleLabel === "string") ? toggleLabel : false;
+
+  if (typeof toggleLabelSuffix === "string") {
+    toggleLabelSuffix = toggleLabelSuffix;
+  } else if (toggleLabelSuffix == false || toggleLabelSuffix === null) {
+    toggleLabelSuffix = "";
+  } else {
+    toggleLabelSuffix = ":";
+  }
+
+  if (obj !== null) {
+    if (toggleClass !== false && toggleLabel !== false) {
+      obj.hasToggleClass = true;
+      obj.toggleClass = toggleClass;
+      obj.toggleClassLabel = toggleLabel + toggleLabelSuffix;
+    }
+    returnObject = obj;
+  }
+
+  return returnObject;
+}

@@ -1,0 +1,81 @@
+// Styles for emoji on drag handles
+.rangeslider {
+  .rangeslider__handle:after {
+    background: transparent;
+    border-color: 0;
+    width: auto; height: 22px;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &.face {
+    .rangeslider__handle:after {
+      content: '\01F600';
+    }
+  }
+
+  &.mouth {
+    .rangeslider__handle:after {
+      content: '\01F444';
+    }
+  }
+
+  &.eyes {
+    .rangeslider__handle:after {
+      content: '\01F441';
+    }
+  }
+
+  &.nose {
+    .rangeslider__handle:after {
+      content: '\01F443';
+    }
+  }
+
+  &.hair {
+    .rangeslider__handle:after {
+      content: '\01F488';
+    }
+  }
+
+  &.brows {
+    .rangeslider__handle:after {
+      content: '\01F41B';
+    }
+  }
+
+  &.beard {
+    .rangeslider__handle:after {
+      content: '\01F9D4';
+    }
+  }
+
+  &.hairColor,
+  &.skin,
+  &.eyesColor,
+  &.glassesColor,
+  &.headcoveringsColor,
+  &.bg {
+    .rangeslider__handle:after {
+      content: '\01F3A8';
+    }
+  }
+
+  &.headcoverings {
+    .rangeslider__handle:after {
+      content: '\01F9D5';
+    }
+  }
+
+  &.glasses {
+    .rangeslider__handle:after {
+      content: '\01F453';
+    }
+  }
+
+  &.piercings {
+    .rangeslider__handle:after {
+      content: '\01F48E';
+    }
+  }
+}

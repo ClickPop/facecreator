@@ -53,10 +53,13 @@ function buildSectionLayout(key, section, $parent = null) {
 function buildOptionLayout(key, option, $parent = null) {
   var $optionCol = null,
     $optionGroup = null,
+    $optionLabelDiv = null,
     $optionLabel = null,
     $optionField = null,
     $optionToggleLabel = null,
-    $optionToggleField = null;
+    $optionToggleField = null,
+    $optionToggleClassLabel = null,
+    $optionToggleClassField = null;
 
   if ($parent === null) $parent = $(this);
 
@@ -65,12 +68,16 @@ function buildOptionLayout(key, option, $parent = null) {
     $optionCol = $("<div></div>").appendTo($parent)
       .addClass("col-sm-6");
     $optionGroup = $("<div></div>").appendTo($optionCol)
-      .addClass("form-group");
-    $optionLabel = $("<label></label>").appendTo($optionGroup)
+      .addClass("form-group")
+      .addClass("face-option");
+    $optionLabelDiv = $("<div></div>").appendTo($optionGroup)
+      .addClass("option-labels");
+    $optionLabel = $("<label></label>").appendTo($optionLabelDiv)
+      .addClass("option-label")
       .attr("for", "select_" + key)
       .text(option.label);
     if (option.hasOwnProperty("hasToggle") && option.hasToggle) {
-      $optionToggleLabel = $("<label>Show: </label>").appendTo($optionGroup).addClass("toggle-label");
+      $optionToggleLabel = $("<label>Show: </label>").appendTo($optionLabelDiv).addClass("toggle-label");
       $optionToggleField = $("<input>").appendTo($optionToggleLabel)
         .addClass("toggles")
         .attr("type", "checkbox")
@@ -78,7 +85,7 @@ function buildOptionLayout(key, option, $parent = null) {
         .attr("aria-label", "Show")
         .attr("title", "Show")
         .attr("value", "")
-        .on('change', buildFace);
+        .on("change", buildFace);
 
       if (option.hasOwnProperty("hides")
         && typeof option.hides === "string"
@@ -86,6 +93,25 @@ function buildOptionLayout(key, option, $parent = null) {
         $optionToggleField.data("hides", option.hides);
       }
     }
+
+    if (option.hasOwnProperty("hasToggleClass") && option.hasToggleClass
+    && option.hasOwnProperty("toggleClass") && typeof option.toggleClass === "string"
+    && option.hasOwnProperty("toggleClassLabel") && typeof option.toggleClassLabel === "string") {
+      $optionToggleClassLabel = $("<label></label>").appendTo($optionLabelDiv)
+        .addClass("toggleClass-label")
+        .text(option.toggleClassLabel + " ");
+
+      $optionToggleClassField = $("<input>").appendTo($optionToggleClassLabel)
+        .addClass("toggleClass")
+        .attr("type", "checkbox")
+        .attr("id", "toggleClass_" + key)
+        .attr("aria-label", option.toggleClassLabel)
+        .attr("title", option.toggleClassLabel)
+        .attr("value", "")
+        .data("toggle-class", option.toggleClass)
+        .on("change", toggleFaceClass);
+    }
+
     $optionField = $("<input>").appendTo($optionGroup)
       .addClass("slider " + key)
       .attr("id", "select_" + key)
@@ -97,7 +123,7 @@ function buildOptionLayout(key, option, $parent = null) {
         rangeClass: "rangeslider " + key,
         onSlide: function(p, v) {updateSlider(p, v, this)}
       })
-      .on('change', changeSlider);
+      .on("change", changeSlider);
   }
 }
 /** END: Layout Functions **/

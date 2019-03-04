@@ -1,6 +1,22 @@
 @import 'includes/variables';
+@import 'includes/emoji';
 @import 'vendor/bootstrap/bootstrap';
 @import 'vendor/rangeslider/rangeslider';
+
+body {
+  background: url('../img/dist/page_assets/page_swoosh.svg') bottom center no-repeat;
+  background-size: contain;
+  position: relative;
+
+  &:after {
+    content: '';
+    background: url('../img/dist/page_assets/page_shapes.svg') bottom center no-repeat;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 300px;
+  }
+}
 
 .loady {
   position: fixed;
@@ -37,7 +53,6 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: auto;
   min-height: 100vh;
 }
@@ -98,85 +113,17 @@
   top: -4px;
 }
 
-.toggle-label {
-  margin-left: 1rem;
-  &:before { content: '('; }
-  &:after { content: ')'; }
-}
 .rangeslider {
   box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
 
   .rangeslider__fill {
     background-color: $faceYellow;
     box-shadow: inset 0 0 0 2px rgba(0,0,0,0.1);
+    transition-duration: .2s;
   }
 
   .rangeslider__handle {
-  	&.emoji {
-  		&:after {
-  			background: transparent;
-  			border-color: 0;
-  			width: auto; height: 22px;
-  			line-height: 22px;
-  			text-align: center;
-  		}
-
-  		&.face {
-  			&:after {
-  				content: '\01F600';
-  			}
-  		}
-  		&.mouth {
-  			&:after {
-  				content: '\01F444';
-  			}
-  		}
-  		&.eyes {
-  			&:after {
-  				content: '\01F441';
-  			}
-  		}
-  		&.nose {
-  			&:after {
-  				content: '\01F443';
-  			}
-  		}
-  		&.hair {
-  			&:after {
-  				content: '\01F488';
-  			}
-  		}
-  		&.brows {
-  			&:after {
-  				content: '\01F41B';
-  			}
-  		}
-  		&.beard {
-  			&:after {
-  				content: '\01F9D4';
-  			}
-  		}
-  		&.hairColor {
-  			&:after {
-  				content: '\01F3A8';
-  			}
-  		}
-      &.headcoverings {
-        &:after {
-          content: '\01F9D5';
-        }
-      }
-      &.glasses {
-        &:after {
-          content: '\01F453';
-        }
-      }
-      &.piercings {
-        &:after {
-          content: '\01F48E';
-        }
-      }
-  	}
+    transition-duration: .2s;
   }
 }
 
@@ -213,14 +160,37 @@
 
 #controls {
   border-bottom: $borderWidth solid $facePurple;
+
+  .control-section {
+    background: #ffffff;
+    border-color: $facePurple;
+    border-style: solid;
+    border-width: 0 $borderWidth;
+    padding: 5px 15px 10px;
+  }
+
+  .face-option {
+
+    .option-labels {
+      display: flex;
+      align-items: left;
+    }
+
+    .option-label {
+      flex-grow: 1;
+    }
+    .toggle-label,
+    .toggleClass-label {
+      align-self: right;
+      margin-left: 1rem;
+
+      &:before { content: '('; }
+      &:after { content: ')'; }
+    }
+  }
 }
 
-.control-section {
-  border-color: $facePurple;
-  border-style: solid;
-  border-width: 0 $borderWidth;
-  padding: 5px 15px 10px;
-}
+
 
 .buttons {
   display: flex;
