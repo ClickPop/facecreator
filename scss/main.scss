@@ -1,5 +1,6 @@
 @import 'includes/variables';
 @import 'includes/emoji';
+@import 'includes/survey';
 @import 'vendor/bootstrap/bootstrap';
 @import 'vendor/rangeslider/rangeslider';
 
@@ -227,7 +228,6 @@ body {
   }
 
   .col-controls {
-    height: calc(100vh - 300px);
     overflow-y: scroll;
   }
 }
