@@ -1,4 +1,4 @@
-# Face Creator
+# Friendly Faces
 A tool to create simple illustrated avatars.
 
 ## Installing Dependecies
