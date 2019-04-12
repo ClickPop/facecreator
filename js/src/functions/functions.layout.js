@@ -59,7 +59,8 @@ function buildOptionLayout(key, option, $parent = null) {
     $optionToggleLabel = null,
     $optionToggleField = null,
     $optionToggleClassLabel = null,
-    $optionToggleClassField = null;
+    $optionToggleClassField = null,
+    $optionToggleIgnoreRandom = false;
 
   if ($parent === null) $parent = $(this);
 
@@ -86,6 +87,10 @@ function buildOptionLayout(key, option, $parent = null) {
         .attr("title", "Show")
         .attr("value", "")
         .on("change", buildFace);
+
+      if (option.hasOwnProperty("toggleIgnoreRandom") && option.toggleIgnoreRandom) {
+        $optionToggleField.data("ignore-random", "true");
+      }
 
       if (option.hasOwnProperty("hides")
         && typeof option.hides === "string"
