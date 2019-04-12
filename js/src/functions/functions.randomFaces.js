@@ -14,7 +14,7 @@ function randomCheckValue() {
   var $this = $(this)
   if (!$this.hasData('ignore-random') || $this.data('ignore-random') !== 'true') {
     $this.attr('checked', (Math.random() >= 0.5) ? true : false);
-  }
+  } else { $this.attr('checked', true); }
 }
 
 // Make a random face.
