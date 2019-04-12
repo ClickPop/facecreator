@@ -167,3 +167,16 @@ function classToggleOption(obj, toggleClass, toggleLabel, toggleLabelSuffix = ":
 
   return returnObject;
 }
+
+function toggleIgnoreRandomOption(obj) {
+  var returnObject = null;
+
+  obj = (typeof obj === "object") ? obj : null;
+
+  if (obj !== null) {
+    obj.toggleIgnoreRandom = true;
+    returnObject = obj;
+  }
+
+  return returnObject;
+}

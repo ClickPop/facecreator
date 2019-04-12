@@ -32,7 +32,7 @@ var sections = {
   decoration: {
     label: "Decoration",
     options: {
-      bg: classToggleOption(toggleOption("Background", 9), "square", "Square")
+      bg: toggleIgnoreRandomOption(classToggleOption(toggleOption("Background", 9), "square", "Square"))
     }
   }
 };
