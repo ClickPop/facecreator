@@ -1,7 +1,7 @@
-# Contributing to Face Creator
+# Contributing to Friendly Faces
 :+1::tada: **First off, thanks for taking the time to contribute** :tada::+1:
 
-The following is a set of guidelines for contributing to Face Creator, which is hosted in the [ClickPop/facecreator](https://github.com/ClickPop/facecreator) repository on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to Friendly Faces, which is hosted in the [ClickPop/facecreator](https://github.com/ClickPop/facecreator) repository on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Code of Conduct
 
@@ -11,7 +11,7 @@ This project and everyone contributing in it is governed by our [Code of Conduct
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for Face Creator. Following these guidelines helps the maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, find related reports :mag_right:, and *hopefully/ultimately* fix them :tada::balloon:.
+This section guides you through submitting a bug report for Friendly Faces. Following these guidelines helps the maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, find related reports :mag_right:, and *hopefully/ultimately* fix them :tada::balloon:.
 
 **Before submitting an issue**, please do a [cursory search][issues] to ensure the problem has not already been submitted. **If one has been created, and it is still open**, add a comment to the existing report instead of creating a new one. If no similar issue can be found, please fill out [the required template][new-issue], add a descriptive title, and submit the bug report.
 
@@ -23,7 +23,7 @@ When submitting your issue, be sure to include as much information about how the
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for Face Creator, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
+This section guides you through submitting an enhancement suggestion for Friendly Faces, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
 
 **Before submitting a suggestion**, please do a [cursory search][issues] to ensure a similar enhancement has not already been suggested. **If one has been created, and it is still open**, add a comment to the existing request instead of creating a new one. If no similar request can be found, please fill out [the required template][new-feature], add a descriptive title, and submit the enhancement request.
 
