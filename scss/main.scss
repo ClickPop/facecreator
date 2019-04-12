@@ -183,7 +183,7 @@ body {
     .toggle-label,
     .toggleClass-label {
       align-self: right;
-      margin-left: 1rem;
+      margin-left: .5rem;
 
       &:before { content: '('; }
       &:after { content: ')'; }
