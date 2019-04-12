@@ -89,7 +89,7 @@ function buildOptionLayout(key, option, $parent = null) {
         .on("change", buildFace);
 
       if (option.hasOwnProperty("toggleIgnoreRandom") && option.toggleIgnoreRandom) {
-        $optionToggleField.data("ignore-random", "true");
+        $optionToggleField.data("ignore-random", true);
       }
 
       if (option.hasOwnProperty("hides")
