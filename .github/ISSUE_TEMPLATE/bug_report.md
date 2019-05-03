@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[BUG] <Enter Short Title Here>"
+title: "[BUG] <Short, Descriptive Title>"
 labels: bug
 assignees: ''
 
@@ -24,10 +24,6 @@ Steps to reproduce the behavior:
 
 A clear and concise description of what you expected to happen.
 
-## Screenshots
-
-If applicable, add screenshots to help explain your problem.
-
 ## Environment Details
 
 Please include any of the following information to help us out:
@@ -40,3 +36,7 @@ Please include any of the following information to help us out:
 ## Additional context
 
 Add any other context about the problem here.
+
+## Screenshots
+
+If applicable, add screenshots to help explain your problem.
